@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
   });
-  sequelize.define("temperament", {
+/*   sequelize.define("temperament", {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -41,5 +41,5 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-  });
+  }); */
 };

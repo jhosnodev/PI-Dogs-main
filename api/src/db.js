@@ -2,7 +2,6 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const { log } = require('console');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
@@ -35,7 +34,7 @@ const { Dog, Temperament, TemperamentDog } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-console.log(sequelize.models);
+//console.log(sequelize.models);
 Dog.belongsToMany(Temperament, { through: TemperamentDog });
 Temperament.belongsToMany(Dog, { through: TemperamentDog });
 

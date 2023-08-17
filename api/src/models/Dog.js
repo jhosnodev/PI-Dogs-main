@@ -18,10 +18,10 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     height: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     weight: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     life_span: {
       type: DataTypes.STRING,
@@ -29,6 +29,9 @@ module.exports = (sequelize) => {
     origin: {
       type: DataTypes.STRING,
     },
+    bred_for: {
+      type : DataTypes.STRING,
+    }
   });
 /*   sequelize.define("temperament", {
     id: {

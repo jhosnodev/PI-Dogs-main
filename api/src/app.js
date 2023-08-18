@@ -22,6 +22,10 @@ server.use((req, res, next) => {
   next();
 });
 
+//cargando temperamentos en la DB
+
+
+//rutas
 server.use('/', routes);
 
 // Error catching endware.

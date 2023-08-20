@@ -1,12 +1,13 @@
 require("dotenv").config();
 const { BASE_URL } = process.env;
+const axios = require('axios')
 //console.log(BASE_URL);
 const getAllDogs = async (req, res) => {
   try {
-    const response = await fetch(BASE_URL); 
-    const dogs = await response.json();
-    //console.log(dogs);
-    res.status(200).json(dogs);
+    const { data} = await axios(BASE_URL); 
+    
+    console.log(data);
+    res.status(200).json(data);
   } catch (error) {
     console.error(`Download error: ${error.message}`);
   }

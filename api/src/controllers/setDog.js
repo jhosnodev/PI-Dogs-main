@@ -1,9 +1,9 @@
 require("dotenv").config();
 const { BASE_URL } = process.env;
 //console.log(BASE_URL);
-//! Falta buscar en la DB
 
-const getDogName = async (req, res) => {
+//! Falta buscar en la DB
+const setDog = async (req, res) => {
   const { breed } = req.params;
   try {
     console.log(`${BASE_URL}/breeds/search?q=${breed}`);
@@ -16,4 +16,4 @@ const getDogName = async (req, res) => {
   }
 };
 
-module.exports = getDogName;
+module.exports = setDog;

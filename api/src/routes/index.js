@@ -5,7 +5,7 @@ const { Router } = require("express");
 const getAllDogs = require("../controllers/getAllDogs");
 const getDog = require("../controllers/getDog");
 const getTemperaments = require("../controllers/getTemperaments");
-
+const setTemperaments = require('../controllers/setTemperaments')
 const router = Router();
 
 // Configurar los routers
@@ -17,7 +17,12 @@ router.get("/dogs", getAllDogs);
 //*Traer perritus por raza
 router.get("/dogs/:breed", getDog);
 
-//!Pendiente
-router.get("/temperaments", getTemperaments);
+
+//!Funciona pero falta subir antes los temps
+router.get("/temperaments", setTemperaments);
+
+
+//* adasdas
+//router.get("/getTemperaments", getTemperaments);
 
 module.exports = router;

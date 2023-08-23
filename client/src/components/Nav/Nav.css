@@ -1,0 +1,26 @@
+.nav___container{
+    width: 100%;
+    background-color: #fdcab042; 
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: row;
+    align-items: center;
+    padding: .8rem 2.5rem;
+    box-sizing: border-box;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    position: fixed;
+}
+
+#nav___brand{
+    width: 2.5rem;
+    cursor: pointer;
+}
+.nav___left-inner-container{
+
+}
+
+.nav___right-inner-container a{
+    margin-left: 1rem;
+}
+

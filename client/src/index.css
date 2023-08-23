@@ -1,13 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Work+Sans:wght@400;700;900&display=swap");
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /*   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f4f2f2;
+}
+h1,
+h2,
+h3,
+h4,
+span,
+a {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+}
+a {
+  color: #f4f2f2;
+  transition: color 0.5s ease-in-out;
+  cursor: pointer;
+}
+a:hover {
+  color: #fd5a59;
+}
+h1,
+h2 {
+  font-weight: 900;
+  color: #fd5a59;
+}
+h5,
+h6,
+p {
+  font-family: "Noto Sans", sans-serif;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.btn___primary {
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* .btn___hightlight{} */
+
+/* CSS */
+.btn___hightlight {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #fd5a59;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.5rem - 1px) calc(1.8rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.btn___hightlight:hover,
+.btn___hightlight:focus {
+  background-color: #fd595985;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.btn___hightlight:hover {
+  transform: translateY(-1px);
+}
+
+.btn___hightlight:active {
+  background-color: #f1a9a9;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+.btn___primary {
+  background-color: #f4f2f2;
+  color: #fd5a59;
+}
+.btn___primary:hover,
+.btn___primary:focus {
+  background-color: #efd3d3;
+
+}
+.btn___primary:active {
+  background-color: #f1a9a9;
+
 }

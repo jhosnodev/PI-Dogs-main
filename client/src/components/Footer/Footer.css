@@ -1,0 +1,16 @@
+.foote_container{
+    width: 100%;
+    background-color: #D6A699;
+    min-height: 6rem;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.foote_container a{
+    color: #FD5A59;
+}
+.foote_container a:hover{
+color: #F4F2F2;
+}

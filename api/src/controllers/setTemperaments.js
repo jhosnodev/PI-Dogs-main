@@ -5,24 +5,23 @@ const { Temperament } = require("../db");
 
 const setTemperaments = async (req, res) => {
   try {
-    const { data } = await axios(BASE_URL);
+    const { data } = await axios.get(BASE_URL);
     const temps = data
       .map((dog) => (dog.temperament ? dog.temperament : "Sin informacion"))
       .map((dog) => dog?.split(", "));
-    const setTemps = [...new Set(temps.flat())];
-    setTemps.forEach(async (tempe) => {
+    let setTemps = [...new Set(temps.flat())];
+    setTemps.forEach( (tempe) => {
       if (tempe) {
-        await Temperament.findOrCreate({
+         Temperament.findOrCreate({
           where: { name: tempe },
         });
       }
     });
     setTemps = await Temperament.findAll();
     res.status(200).json(setTemps);
-     
   } catch (error) {
-    return {'Download error': error.message};
+    console.error(`Download error: ${error.message}`);
   }
 };
 
-module.exports = { setTemperaments };
+module.exports =  setTemperaments ;

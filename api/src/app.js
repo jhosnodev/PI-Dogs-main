@@ -26,8 +26,7 @@ server.use((req, res, next) => {
   next();
 });
 
-//subir la info de temps a la DB
-confirmTemps()
+
 
 server.use('/', routes);
 

@@ -4,7 +4,7 @@ const { Router } = require("express");
 
 const getAllDogs = require("../controllers/getAllDogs");
 const getDog = require("../controllers/getDog");
-const getTemperaments = require("../controllers/getTemperaments");
+
 const setTemperaments = require('../controllers/setTemperaments')
 const router = Router();
 

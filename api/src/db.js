@@ -3,8 +3,6 @@ const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 
-const { setTemperaments} = require('./controllers/setTemperaments')
-
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
@@ -47,10 +45,6 @@ const { Dog, Temperament, TemperamentDog } = sequelize.models;
 //console.log(sequelize.models);
 Dog.belongsToMany(Temperament, { through: TemperamentDog });
 Temperament.belongsToMany(Dog, { through: TemperamentDog });
-
-
-
-
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

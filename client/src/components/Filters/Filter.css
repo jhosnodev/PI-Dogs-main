@@ -1,0 +1,45 @@
+.filter___main {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.filter___weight-control,
+.filter___alphabect-control,
+.filter___temperaments-control {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
+}
+.filter___weight-control button,
+.filter___alphabect-control button {
+  display: inline-block;
+  margin: 0.2rem;
+}
+.filter___temperaments-control select {
+  color: #141110;
+  background-color: #f4f2f2;
+  border: none;
+  font-size: 1rem;
+  font-family: "Noto Sans", sans-serif;
+  padding: 0.72rem 0.5rem;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  border-radius: 8px ;
+  padding: calc(0.5rem - 1px) calc(1.8rem - 1px);
+  display: inline-block;
+}
+.filter___temperaments-control select:focus-visible {
+    outline: #f1a9a9 auto 1px;
+}
+.filter___weight-control label,
+.filter___alphabect-control label,
+.filter___temperaments-control label {
+    margin-bottom: 1rem;
+}

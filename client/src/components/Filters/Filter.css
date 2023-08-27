@@ -31,8 +31,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-  border-radius: 8px ;
-  padding: calc(0.5rem - 1px) calc(1.8rem - 1px);
+  border-radius: 8px;
   display: inline-block;
 }
 .filter___temperaments-control select:focus-visible {

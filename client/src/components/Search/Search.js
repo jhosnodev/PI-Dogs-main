@@ -4,8 +4,7 @@ import "./Search.css";
 function Search() {
   return (
     <div className="search___main">
-
-      <input placeholder="Buscar por raza" className="search___input"/>
+      <input placeholder="Buscar por raza" className="search___input" />
       <button className="btn___hightlight">
         <svg
           width="20px"

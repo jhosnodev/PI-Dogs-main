@@ -1,7 +1,17 @@
 import React from "react";
 import "./Filter.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getTemperament } from "../../redux/actions";
+import { useEffect } from "react";
 
 function Filters() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getTemperament());
+  }, [dispatch]);
+  const allTemps = useSelector((state) => state.temps);
+  console.log(allTemps);
+
   return (
     <div className="filter___main">
       <div className="filter___weight-control">
@@ -62,10 +72,11 @@ function Filters() {
         <label>Temperamento</label>
         <select>
           <option>Temperamento</option>
-          <option>Temperamento</option>
-          <option>Temperamento</option>
-          <option>Temperamento</option>
-          <option>Temperamento</option>
+       {
+        allTemps.map( temp => 
+          <option value={ temp.id } key={temp.id}>{temp.name}</option>
+        )
+       }
         </select>
       </div>
     </div>

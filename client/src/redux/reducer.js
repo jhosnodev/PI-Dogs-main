@@ -2,6 +2,8 @@ const initialState = {
   dogs: [],
   fav: [],
   temps: [],
+  search: [],
+  detail : {}
 };
 
 export const reducer = (state = initialState, action) => {
@@ -10,6 +12,16 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         dogs: action.payload,
+      };
+    case "GET_DOG_BY_NAME":
+      return {
+        ...state,
+        search: action.payload,
+      };
+    case "GET_DOG_BY_BREED":
+      return {
+        ...state,
+        detail: action.payload,
       };
     case "GET_TEMPERAMENTS":
       return {
@@ -27,6 +39,16 @@ export const reducer = (state = initialState, action) => {
         temps: action.payload,
       };
     case "ADD_DOG":
+      return {
+        ...state,
+        temps: action.payload,
+      };
+    case "UPDATE_DOG":
+      return {
+        ...state,
+        temps: action.payload,
+      };
+    case "DELETE_DOG":
       return {
         ...state,
         temps: action.payload,

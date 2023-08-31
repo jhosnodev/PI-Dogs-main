@@ -1,0 +1,83 @@
+.details___main {
+  min-height: 120vh;
+}
+.details___dogs-img {
+  min-height: 60vh;
+  width: 100%;
+  z-index: 0;
+  /*     background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; */
+}
+.details___dogs-img-gradient {
+  background: rgb(253, 90, 89);
+  background: linear-gradient(
+    180deg,
+    rgba(253, 90, 89, 0) 0%,
+    rgba(244, 242, 242, 1) 90%
+  );
+  min-height: 10vh;
+  position: relative;
+  bottom: 0;
+}
+
+.details___dogs-info {
+  background-color: #f4f2f2;
+  width: 60%;
+  height: 50%;
+  box-sizing: border-box;
+  border-radius: 15px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  z-index: 333;
+  padding: 2rem;
+  margin-bottom: 4rem;
+}
+.details___dogs-info:hover {
+  background-color: #f4f2f2f4;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  transform: translateY(-1px);
+}
+.details___span-temp {
+  font-size: 0.6rem;
+  padding: calc(0.4rem - 1px) calc(1.2rem - 1px);
+  background: #fd5a59;
+  color: #f4f2f2;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  height: fit-content;
+}
+.details___fav-buttom {
+  background-color: #f4f2f2;
+  padding: 0.8rem;
+  position: absolute;
+  top: 11px;
+  right: 12px;
+  z-index: 2;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  border: 1px solid rgb(220, 220, 220);
+}
+.details___temp-list {
+  margin-block: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-inline-start: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 0.5rem;
+}

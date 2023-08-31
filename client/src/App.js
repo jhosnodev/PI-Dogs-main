@@ -15,8 +15,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/home" component={Home} />
-        <Route path="home/detail/:id" element={<Details />} />
-        <Route path="*" element={<Error />} />
+        <Route path="/dog/:breed" component={Details } />
+        <Route path="*" component={Error} />
 
       </Switch>
       <Footer />

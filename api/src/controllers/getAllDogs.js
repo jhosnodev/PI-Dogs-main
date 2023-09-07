@@ -37,21 +37,7 @@ const allDogsApi = async () => {
   } catch (error) {
     return { error: error };
   }
-  /*   const allDogs = api.data?.map(dog => {
-    return {
-        id: dog.id,
-        name: dog.name,
-        image: dog.image.url,
-        minHeight: parseInt(dog.height.metric.split("-")[0]),
-        maxHeight: parseInt(dog.height.metric.split("-")[1]),
-        minWeight: parseInt(dog.weight.metric.split("-")[0]),
-        maxWeight: parseInt(dog.weight.metric.split("-")[1]),
-        minLifeSpan: parseInt(dog.life_span.split("-")[0]),
-        maxLifeSpan: parseInt(dog.life_span.split("-")[1]),
-        temperaments: dog.temperament,
-        from: "API"
-    };
-}); */
+ 
 };
 const allDogs = async () => {
   try {

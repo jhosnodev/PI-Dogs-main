@@ -34,6 +34,8 @@
   position: relative;
   bottom: 28px;
   border-radius: 15px 15px 0 0;
+  height: 30vh;
+  max-height: 30vh;
 }
 .card___info-container h2 {
   color: #141110;
@@ -74,6 +76,12 @@
   height: fit-content;
 }
 
+.card___img-container {
+  min-height: 25vh;
+  width: 100%;
+  z-index: 0;
+  border-radius: 15px 15px 0 0;
+}
 .card___img-container img {
   vertical-align: middle;
 }

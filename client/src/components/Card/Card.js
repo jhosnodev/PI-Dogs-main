@@ -6,12 +6,22 @@ function Card({ name, image, temperament, bred_for, weight, id, breed }) {
   const URL = `https://cdn2.thedogapi.com/images/${image}.jpg`;
   return (
     <article className="card___container" key={id}>
-      <div className="card___img-container">
-        <button className="card___fav-buttom">❤</button>
-        <Link to={`dog/${name}`}>
-          <img src={URL} alt={name} />
-        </Link>
-      </div>
+      <Link to={`dog/${name}`}>
+        <div
+          className="card___img-container"
+          style={{
+            backgroundImage: `url("https://cdn2.thedogapi.com/images/${image}.jpg")`,
+        
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundOrigin: "content-box",
+            backgroundSize: "cover",
+          }}
+        >
+          <button className="card___fav-buttom">❤</button>
+          {/* <img src={URL} alt={name} /> */}
+        </div>
+      </Link>
       <div className="card___info-container">
         <span>
           <svg width="18px" height="18px" viewBox="0 0 16 16" version="1.1">

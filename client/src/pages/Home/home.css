@@ -1,16 +1,18 @@
 .home___main {
   padding-top: 6rem;
-  min-height: 100vh;
-  background: rgb(253, 90, 89);
-  background: linear-gradient(
+  height: 150vh;
+  max-height: 300vh;
+  min-height: 120vh;
+  background: rgba(244, 242, 242, 1);
+/*   background: linear-gradient(
     180deg,
     rgba(253, 90, 89, 1) 0%,
     rgba(244, 242, 242, 1) 30%
-  );
+  ); */
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 15% 1fr;
+  grid-template-rows: 5% 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }

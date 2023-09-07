@@ -10,9 +10,9 @@ const setTemperaments = async (req, res) => {
       .map((dog) => (dog.temperament ? dog.temperament : "Sin informacion"))
       .map((dog) => dog?.split(", "));
     let setTemps = [...new Set(temps.flat())];
-    setTemps.forEach( (tempe) => {
+    setTemps.forEach((tempe) => {
       if (tempe) {
-         Temperament.findOrCreate({
+        Temperament.findOrCreate({
           where: { name: tempe },
         });
       }
@@ -24,4 +24,4 @@ const setTemperaments = async (req, res) => {
   }
 };
 
-module.exports =  setTemperaments ;
+module.exports = setTemperaments;

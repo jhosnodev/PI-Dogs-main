@@ -1,10 +1,10 @@
 .card___container {
   width: 20%;
+  height: 40%;
   box-sizing: border-box;
   border-radius: 15px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-
   position: relative;
   text-decoration: none;
   transition: all 250ms;
@@ -72,4 +72,17 @@
   font-weight: 700;
   border-radius: 0.25rem;
   height: fit-content;
+}
+
+.card___img-container img {
+  vertical-align: middle;
+}
+.card___img-container a {
+  height: 35%;
+}
+.card___see-more {
+  color: #fd5a59;
+}
+.card___see-more:hover {
+  color: #fd595985;
 }

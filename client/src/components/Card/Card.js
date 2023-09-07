@@ -2,21 +2,16 @@ import React from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
 
-function Card({
-  name,
-  image,
-  temperament,
-  bred_for,
-  weight,
-}) {
+function Card({ name, image, temperament, bred_for, weight, id, breed }) {
   const URL = `https://cdn2.thedogapi.com/images/${image}.jpg`;
-  console.log(URL);
   return (
-    <article className="card___container">
-      <button className="card___fav-buttom">❤</button>
-      <Link to="/detail/:id">
-        <img src={URL} alt={name} />
-      </Link>
+    <article className="card___container" key={id}>
+      <div className="card___img-container">
+        <button className="card___fav-buttom">❤</button>
+        <Link to={`dog/${name}`}>
+          <img src={URL} alt={name} />
+        </Link>
+      </div>
       <div className="card___info-container">
         <span>
           <svg width="18px" height="18px" viewBox="0 0 16 16" version="1.1">
@@ -29,14 +24,25 @@ function Card({
           </svg>{" "}
           {weight.imperial}
         </span>
-        <Link to="/detail/:id">
+        <Link to={`dog/${name}`}>
           <h2>{name}</h2>
         </Link>
-        <p>{bred_for}</p>
+        <p>
+          {bred_for.slice(0, 50)}
+          {"... "}
+          {
+            <Link className="card___see-more" to={`dog/${name}`}>
+              ver más
+            </Link>
+          }
+        </p>
         <ul className="card___temp-list">
-          {temperament.split(", ").map((temp) => (
-            <li className="card___span-temp">{temp} </li>
-          ))}
+          {temperament
+            .split(", ")
+            .slice(0, 3)
+            .map((temp) => (
+              <li className="card___span-temp">{temp} </li>
+            ))}
         </ul>
       </div>
     </article>

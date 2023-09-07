@@ -5,7 +5,7 @@ import hero from "../../data/hero";
 import perritu from "../resource/perrito_hero_1.png";
 
 function Hero() {
-  console.log(hero);
+
   const [random, setRandom] = useState(0);
 
   useEffect(() => {

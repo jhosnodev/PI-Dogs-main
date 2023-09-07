@@ -1,6 +1,6 @@
 .hero___container {
   height: 90vh;
-  background: rgb(253, 90, 89);
+  background: #fd5a59;
   background: linear-gradient(
     180deg,
     rgba(253, 90, 89, 1) 0%,
@@ -17,6 +17,7 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   overflow: hidden;
+  padding-top: 5rem;
 }
 .hero___right-section-container {
     padding-left: 3rem;

@@ -18,7 +18,7 @@ function List() {
   const indexOfLastDog = currentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
   const currentDogs = dogs.slice(indexOfFirstDog, indexOfLastDog);
-
+  console.log(indexOfFirstDog, indexOfLastDog, currentDogs);
   return (
     <div className="list___main">
       <h3>Listado</h3>
@@ -37,7 +37,7 @@ function List() {
         ))}
         <Pagination
           dogsPerPage={dogsPerPage}
-          totalItems={allDogs.length}
+          totalItems={dogs.length}
           currentPage={currentPage}
           onPageChange={setCurrentPage}
         />

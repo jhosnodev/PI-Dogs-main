@@ -3,40 +3,45 @@ import { useParams } from "react-router-dom";
 import "./Details.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getDogByBreed } from "../../redux/actions";
+import { Link } from "react-router-dom";
 
 function Details() {
   var { breed } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    
     dispatch(getDogByBreed(breed));
   }, [dispatch, breed, useSelector]);
   const detail = useSelector((state) => state.detail);
-  const dog = detail[0]
+  const dog = detail[0];
   console.log(dog);
   return (
     <div className="details___main">
       <div
         className="details___dogs-img"
-        
-        style={dog ?{
-          backgroundImage: `url("https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg")`,
-          backgroundAttachment: 'fixed',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundOrigin: 'content-box',
-          backgroundSize: 'cover'
-        } : {}}
+        style={
+          dog
+            ? {
+                backgroundImage: `url("https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg")`,
+                backgroundAttachment: "fixed",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundOrigin: "content-box",
+                backgroundSize: "cover",
+              }
+            : {}
+        }
       >
         <div className="details___dogs-img-gradien"></div>
       </div>
       <div className="details___dogs-info">
-
+        <Link className="btn___hightlight" to={`edit/${dog?.id}`}>
+          Editar
+        </Link>
         <button className="details___fav-buttom">❤</button>
-   
+
         <h2>{dog?.name}</h2>
-      <span>
+        <span>
           <svg width="18px" height="18px" viewBox="0 0 16 16" version="1.1">
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <g transform="translate(1.000000, 0.000000)" fill="#fd5a59">
@@ -47,7 +52,7 @@ function Details() {
           </svg>{" "}
           {dog?.weight.imperial}
         </span>
-        
+
         <p>{dog?.breed_group}</p>
         <p>{dog?.bred_for}</p>
         <p>{dog?.life_span}</p>

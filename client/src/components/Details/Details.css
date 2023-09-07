@@ -42,8 +42,9 @@
   padding: 2rem;
   margin-bottom: 4rem;
 }
-.details___dogs-info:hover {
-  background-color: #f4f2f2f4;
+.details___dogs-info:hover,
+.details___fav-buttom:hover {
+  /*  background-color: #f4f2f2f4; */
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   transform: translateY(-1px);
 }
@@ -67,7 +68,13 @@
   border: none;
   border-radius: 7px;
   cursor: pointer;
-  border: 1px solid rgb(220, 220, 220);
+  padding: calc(0.95rem - 1px) calc(1rem - 1px);
+  border: 1px solid rgb(220 220 220 / 60%);
+}
+.details___dogs-info .btn___hightlight {
+  position: absolute;
+  top: 11px;
+  right: 60px;
 }
 .details___temp-list {
   margin-block: 0;

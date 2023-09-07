@@ -11,7 +11,7 @@ function Card({ name, image, temperament, bred_for, weight, id, breed }) {
           className="card___img-container"
           style={{
             backgroundImage: `url("https://cdn2.thedogapi.com/images/${image}.jpg")`,
-        
+
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundOrigin: "content-box",
@@ -38,7 +38,7 @@ function Card({ name, image, temperament, bred_for, weight, id, breed }) {
           <h2>{name}</h2>
         </Link>
         <p>
-          {bred_for.slice(0, 50)}
+          {bred_for?.slice(0, 50)}
           {"... "}
           {
             <Link className="card___see-more" to={`dog/${name}`}>
@@ -48,10 +48,12 @@ function Card({ name, image, temperament, bred_for, weight, id, breed }) {
         </p>
         <ul className="card___temp-list">
           {temperament
-            .split(", ")
-            .slice(0, 3)
+            ?.split(", ")
+            .slice(0, 2)
             .map((temp) => (
-              <li className="card___span-temp">{temp} </li>
+              <li className="card___span-temp" key={temp}>
+                {temp}{" "}
+              </li>
             ))}
         </ul>
       </div>

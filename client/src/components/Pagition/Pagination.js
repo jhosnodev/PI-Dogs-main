@@ -13,10 +13,19 @@ function Pagination({ dogsPerPage, totalItems, currentPage, onPageChange }) {
 
   return (
     <div className="pagination___container">
-
       <ul className="pagination">
-      <li className="page-item page-item-left">Primero</li>
-      <li className="page-item page-item-left">Anterior</li>
+        <li
+          className="page-item page-item-left"
+          onClick={() => onPageChange(1)}
+        >
+          Primero
+        </li>
+        <li
+          className="page-item page-item-left"
+          onClick={() => onPageChange(currentPage - 1)}
+        >
+          Anterior
+        </li>
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
             <button
@@ -27,8 +36,18 @@ function Pagination({ dogsPerPage, totalItems, currentPage, onPageChange }) {
             </button>
           </li>
         ))}
-      <li className="page-item page-item-right">Siguiente</li>
-      <li className="page-item page-item-right">Último</li>
+        <li
+          className="page-item page-item-right"
+          onClick={() => onPageChange(currentPage + 1)}
+        >
+          Siguiente
+        </li>
+        <li
+          className="page-item page-item-right"
+          onClick={() => onPageChange(totalPages)}
+        >
+          Último
+        </li>
       </ul>
     </div>
   );

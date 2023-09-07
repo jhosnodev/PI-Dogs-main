@@ -4,7 +4,7 @@ import Card from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { getDogs } from "../../redux/actions";
 import Pagination from "../Pagition/Pagination";
-import  dogs  from "../../data/pivot";
+import dogs from "../../data/pivot";
 function List() {
   const dispatch = useDispatch();
   useEffect(() => {

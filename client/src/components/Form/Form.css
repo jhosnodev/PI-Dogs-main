@@ -1,0 +1,112 @@
+.form___main {
+  min-height: 120vh;
+  padding-top: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form___bg-img {
+  min-height: 60vh;
+  width: 100%;
+  z-index: 0;
+  /*     background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center; */
+}
+
+.form___dogs-info {
+  background-color: #f4f2f2;
+  width: 60%;
+  min-height: 50%;
+  box-sizing: border-box;
+  border-radius: 15px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  /*   position: absolute;
+  top: 20%;
+  left: 20%; */
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+
+  padding: 2rem;
+  margin-bottom: 4rem;
+}
+.form___dogs-info:hover,
+.form___fav-buttom:hover {
+  /*  background-color: #f4f2f2f4; */
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  transform: translateY(-1px);
+}
+.form___dogs-info form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.form___dogs-info form fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-bottom: 1.5rem;
+}
+.form___dogs-info .btn___hightlight {
+  width: 100%;
+}
+.form___dogs-info form input,
+.form___multi-select {
+  color: #141110;
+  background-color: #fefbfb;
+  border: 1px solid rgb(220 220 220 / 60%);
+  font-size: 1rem;
+  font-family: "Noto Sans", sans-serif;
+  padding: 0.72rem 0.5rem;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  border-radius: 8px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+.form___dogs-info form input:focus-visible {
+  outline: #f1a9a9 auto 1px;
+}
+.form___range {
+  display: grid !important;
+  grid-template-columns: 46% 8% 46%;
+  grid-template-rows: 30% 70%;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 100%;
+
+  margin-bottom: 1rem;
+}
+.form___range label {
+  grid-area: 1 / 1 / 2 / 4;
+  align-self: flex-start;
+  justify-self: left;
+}
+.form___range .form___input-min-range {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.form___range p {
+  grid-area: 2 / 2 / 3 / 3;
+}
+.form___range .form___input-max-range {
+  grid-area: 2 / 3 / 3 / 4;
+}

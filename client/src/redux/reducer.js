@@ -3,7 +3,9 @@ const initialState = {
   fav: [],
   temps: [],
   search: [],
-  detail : {}
+  detail: {},
+  response: {},
+  alert: {},
 };
 
 export const reducer = (state = initialState, action) => {
@@ -41,7 +43,7 @@ export const reducer = (state = initialState, action) => {
     case "ADD_DOG":
       return {
         ...state,
-        temps: action.payload,
+        alert: action.payload,
       };
     case "UPDATE_DOG":
       return {

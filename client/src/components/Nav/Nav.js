@@ -14,8 +14,8 @@ const Nav = () => {
       </div>
       <div className="nav___right-inner-container">
         <NavLink to="/home">Home</NavLink>
-        <NavLink to="/home">Fav</NavLink>
-        <NavLink to="/home">Nuevo</NavLink>
+        <NavLink to="/fav">Fav</NavLink>
+        <NavLink to="/dog/add">Nuevo</NavLink>
       </div>
     </nav>
   );

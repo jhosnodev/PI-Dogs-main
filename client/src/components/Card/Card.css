@@ -64,6 +64,8 @@
   flex-wrap: wrap;
   align-content: center;
   gap: 0.5rem;
+  overflow-y: scroll;
+  height: 30%;
 }
 .card___span-temp {
   font-size: 0.6rem;

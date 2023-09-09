@@ -39,7 +39,7 @@
   touch-action: manipulation;
   vertical-align: baseline;
   z-index: 333;
-  padding: 2rem;
+  padding: 4rem 2rem 2rem 2rem;
   margin-bottom: 4rem;
 }
 .details___dogs-info:hover,
@@ -87,4 +87,22 @@
   flex-wrap: wrap;
   align-content: center;
   gap: 0.5rem;
+}
+.details___tag {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+
+}
+.details___tag h3,
+.details___tag p {
+  margin: 0;
+  gap: 0;
+  padding: 0;
+  margin-bottom: .5rem;
+}
+.details___tag h3 {
+  margin-right: 0.5rem;
 }

@@ -2,29 +2,30 @@ require("dotenv").config();
 const { BASE_URL } = process.env;
 const axios = require("axios");
 const { Dog, Temperament } = require("../db");
-//console.log(BASE_URL);
 
-//*Buscar todos los perros o buscar por nombre de raza
-const getAllDogs = async (req, res) => {
-  const { name } = req.query;
+//*Buscar todos los perros y devolver un arreglo
+/// esta funcion limpia la data de la api y alimenta el resto de las funciones que devuelven respuestas a las rutas de consulta
+
+const getAllData = async () => {
+  /*   const name = req.query.name; */
   const resultApi = await allDogsApi();
   const result = await allDogs();
-  console.log(resultApi);
+  return { ...result, ...resultApi };
+};
+
+const getAllDogs = async (req, res) => {
+  const name = req.query.name;
+  const allMyDogs = await getAllData();
+ /*  console.log(allMyDogs);
+ */
   if (name) {
-    let resultName =   result.filter(
+    let resultName = Object.values(allMyDogs).filter(
       (dog) => dog["name"].toLowerCase() == name.toLowerCase()
     );
-    console.log(resultName);
-    if (!resultName) {
-      console.log('entro');
-      resultName = resultApi.filter(
-        (dog) => dog["name"].toLowerCase() == name.toLowerCase()
-      );
-    }
-    console.log(resultName);
-    res.status(200).send({...result, ...resultApi});
+
+    res.status(200).send(resultName);
   } else {
-    res.status(200).json(result);
+    res.status(200).send(allMyDogs);
     /*  res.status(200).send({...result}); */
   }
 };
@@ -32,12 +33,23 @@ const getAllDogs = async (req, res) => {
 const allDogsApi = async () => {
   try {
     const { data } = await axios(BASE_URL);
-    /* console.log(data); */
-    return data;
+    const result = data.map((dog) => {
+      return {
+        id: dog.id,
+        name: dog.name,
+        image: `https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg`,
+        height: dog.height.metric,
+        weight: dog.weight.metric,
+        life_span: dog.life_span,
+        bred_for: dog.bred_for,
+        origin: dog.origin,
+        temperament: dog.temperament ? dog.temperament.split(", ") : "unknow",
+      };
+    });
+    return result;
   } catch (error) {
     return { error: error };
   }
- 
 };
 const allDogs = async () => {
   try {
@@ -56,4 +68,4 @@ const allDogs = async () => {
     console.error(`Download error: ${error.message}`);
   }
 };
-module.exports = getAllDogs;
+module.exports = { getAllDogs, getAllData };

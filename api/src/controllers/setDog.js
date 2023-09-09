@@ -10,6 +10,7 @@ const setDog = async (req, res) => {
   if (name && height && weight && life_span && bred_for && temperament) {
     try {
       image = await axios.get("https://dog.ceo/api/breeds/image/random");
+      console.log(image);
     } catch (error) {
       console.log(error);
     }
@@ -23,15 +24,16 @@ const setDog = async (req, res) => {
       imagen: image.data.message,
     });
     temperament.map(async (temp) => {
-    
       const findTemp = await Temperament.findAll({
         where: { id: temp.value },
       });
-      console.log(temperament[0].value);
-      console.log(findTemp);
+     /*  console.log(temperament[0].value);
+      console.log(findTemp); */
       createDog.addTemperament(findTemp);
     });
- /*    console.log(createDog); */
+     /*    console.log(createDog);
+        console.log(createDog); */
+        console.log(createDog);
 
     res.status(200).send(createDog);
   } else {

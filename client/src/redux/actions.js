@@ -55,3 +55,23 @@ export const setDog = (info) => {
     }
   };
 };
+
+export const orderAlpha = (order) => {
+  return {
+    type: "ORDER_ALPHA",
+    payload: order,
+  };
+};
+
+export const orderNumber = (order) => {
+  return {
+    type: "ORDER_NUMBER",
+    payload: order,
+  };
+};
+export const filterTemps = (temp) => {
+  return {
+    type: "FILTER_TEMP",
+    payload: temp,
+  };
+};

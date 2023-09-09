@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Filter.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getTemperament } from "../../redux/actions";
-import { useEffect } from "react";
+import { getTemperament, filterTemps } from "../../redux/actions";
+
 
 function Filters() {
   const dispatch = useDispatch();
+  const [temp, setTemp] = useState('')
   useEffect(() => {
     dispatch(getTemperament());
   }, [dispatch]);
@@ -18,6 +19,12 @@ function Filters() {
   const handleSortBreed = (e) => {
     console.log(e.target.id);
   };
+
+  const handleTemps = (e)=>{
+    setTemp(e.target.value)
+    console.log(e.target.value)
+    dispatch(filterTemps(temp))
+  }
 
   return (
     <div className="filter___main">
@@ -95,10 +102,10 @@ function Filters() {
         </div>
       </div>
       <div className="filter___temperaments-control">
-        <select>
+        <select onChange={handleTemps} value={temp}>
           <option>Temperamento</option>
           {allTemps.map((temp) => (
-            <option value={temp.id} key={temp.id}>
+            <option value={temp.name} key={temp.id}>
               {temp.name}
             </option>
           ))}

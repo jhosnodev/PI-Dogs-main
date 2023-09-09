@@ -60,11 +60,30 @@ export const reducer = (state = initialState, action) => {
         ...state,
         temps: action.payload,
       };
-      case "RESET_SEARCH":
-        return {
-          ...state,
-          search: []
-        }
+    case "RESET_SEARCH":
+      return {
+        ...state,
+        search: [],
+      };
+    case "FILTER_TEMP":
+      return {
+        ...state,
+        dogs: Object.values(state.dogs).filter((dog) =>
+          dog.temperament?.includes(action.payload)
+        ),
+      };
+    case "ORDER_ALPHA":
+      return {
+        ...state,
+        dogs: state.dogs.sort((a, b) =>
+          action.payload === "A" ? a.id - b.id : b.id - a.id
+        ),
+      };
+    case "ORDER_NUMBER":
+      return {
+        ...state,
+        search: [],
+      };
 
     default:
       return { ...state };

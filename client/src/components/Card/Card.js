@@ -32,7 +32,7 @@ function Card({ name, image, temperament, bred_for, weight, id, breed }) {
               </g>
             </g>
           </svg>{" "}
-          {weight.imperial}
+          {weight}
         </span>
         <Link to={`dog/${id}`}>
           <h2>{name}</h2>

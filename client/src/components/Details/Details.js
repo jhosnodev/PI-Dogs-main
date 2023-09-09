@@ -60,7 +60,7 @@ function Details() {
         <p>{dog?.life_span}</p>
         <ul className="details___temp-list">
           {dog?.temperament?.map((temp) => (
-            <li className="details___span-temp">{temp} </li>
+            <li className="details___span-temp" key={temp}>{temp} </li>
           ))}
         </ul>
       </div>

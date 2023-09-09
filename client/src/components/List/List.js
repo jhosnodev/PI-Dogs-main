@@ -37,7 +37,7 @@ function List() {
         ))}
         <Pagination
           dogsPerPage={dogsPerPage}
-          totalItems={allDogs.length}
+          totalItems={Object.values(allDogs).length}
           currentPage={currentPage}
           onPageChange={setCurrentPage}
         />

@@ -2,19 +2,20 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./Details.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogByBreed } from "../../redux/actions";
+import { getDogByID } from "../../redux/actions";
 import { Link } from "react-router-dom";
 
 function Details() {
-  var { breed } = useParams();
+  const { id } = useParams();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDogByBreed(breed));
-  }, [dispatch, breed, useSelector]);
+    dispatch(getDogByID(id));
+  }, [dispatch, id, useSelector]);
   const detail = useSelector((state) => state.detail);
-  const dog = detail[0];
-  console.log(dog);
+  const dog = detail;
+  /* console.log(dog); */
   return (
     <div className="details___main">
       <div
@@ -22,7 +23,7 @@ function Details() {
         style={
           dog
             ? {
-                backgroundImage: `url("https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg")`,
+                backgroundImage: `url("${dog.image}")`,
                 backgroundAttachment: "fixed",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
@@ -35,7 +36,7 @@ function Details() {
         <div className="details___dogs-img-gradien"></div>
       </div>
       <div className="details___dogs-info">
-        <Link className="btn___hightlight" to={`edit/${dog?.id}`}>
+        <Link className="btn___hightlight" to={`dog/edit/${dog?.id}`}>
           Editar
         </Link>
         <button className="details___fav-buttom">❤</button>
@@ -50,14 +51,15 @@ function Details() {
               </g>
             </g>
           </svg>{" "}
-          {dog?.weight.imperial}
+          {dog?.weight}
         </span>
 
-        <p>{dog?.breed_group}</p>
+  
+        <p>{dog?.origin}</p>
         <p>{dog?.bred_for}</p>
         <p>{dog?.life_span}</p>
         <ul className="details___temp-list">
-          {dog?.temperament.split(", ").map((temp) => (
+          {dog?.temperament?.map((temp) => (
             <li className="details___span-temp">{temp} </li>
           ))}
         </ul>

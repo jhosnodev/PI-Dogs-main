@@ -20,7 +20,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         search: action.payload,
       };
-    case "GET_DOG_BY_BREED":
+    case "GET_DOG_BY_ID":
       return {
         ...state,
         detail: action.payload,

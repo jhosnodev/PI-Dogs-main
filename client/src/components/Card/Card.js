@@ -3,14 +3,14 @@ import "./Card.css";
 import { Link } from "react-router-dom";
 
 function Card({ name, image, temperament, bred_for, weight, id, breed }) {
-  const URL = `https://cdn2.thedogapi.com/images/${image}.jpg`;
+  const URL = ``;
   return (
     <article className="card___container" key={id}>
       <Link to={`dog/${id}`}>
         <div
           className="card___img-container"
           style={{
-            backgroundImage: `url("https://cdn2.thedogapi.com/images/${image}.jpg")`,
+            backgroundImage: `url("${image}")`,
 
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
@@ -48,13 +48,11 @@ function Card({ name, image, temperament, bred_for, weight, id, breed }) {
         </p>
         <ul className="card___temp-list">
           {/*   .slice(0, 2) */}
-          {temperament
-            ?.split(", ")
-            .map((temp) => (
-              <li className="card___span-temp" key={temp}>
-                {temp}{" "}
-              </li>
-            ))}
+          {temperament?.map((temp) => (
+            <li className="card___span-temp" key={temp}>
+              {temp}{" "}
+            </li>
+          ))}
         </ul>
       </div>
     </article>

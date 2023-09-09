@@ -33,12 +33,12 @@ export const getDogByName = (name) => {
     }
   };
 };
-export const getDogByBreed = (breed) => {
+export const getDogByID = (id) => {
   return async (dispatch) => {
     try {
-      /* http://localhost:3001/dogs/vizsla */
-      const { data } = await axios(`${enpointLocal}dogs/${breed}`);
-      return dispatch({ type: "GET_DOG_BY_BREED", payload: data });
+      /* http://localhost:3001/dogs/12 */
+      const { data } = await axios(`${enpointLocal}dogs/${id}`);
+      return dispatch({ type: "GET_DOG_BY_ID", payload: data[0] });
     } catch (error) {
       console.log(error.message);
     }

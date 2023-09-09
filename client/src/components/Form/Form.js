@@ -81,12 +81,12 @@ function Form() {
         <h2>{id ? "Editar" : "Nuevo Perritu"}</h2>
         <form onSubmit={handleSubmit}>
           <fieldset>
-            <label>Nombre:</label>
+            <label>Raza:</label>
             <input
               id="name"
               name="name"
               onChange={handleInputs}
-              placeholder="name"
+              placeholder="Nombre de la raza"
               value={dogData.name}
             />
             <span className="form___error-msg">{error?.name}</span>
@@ -97,7 +97,7 @@ function Form() {
               id="bred_for"
               name="bred_for"
               onChange={handleInputs}
-              placeholder="Criado para"
+              placeholder="Especialidad de la raza"
               value={dogData.bred_for}
             />
             <span className="form___error-msg">{error?.bred_for}</span>

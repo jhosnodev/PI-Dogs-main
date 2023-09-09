@@ -22,7 +22,7 @@ function Pagination({ dogsPerPage, totalItems, currentPage, onPageChange }) {
         </li>
         <li
           className="page-item page-item-left"
-          onClick={() => onPageChange(currentPage - 1)}
+          onClick={() => onPageChange(currentPage != 1 ? currentPage - 1 : 1)}
         >
           Anterior
         </li>
@@ -38,7 +38,11 @@ function Pagination({ dogsPerPage, totalItems, currentPage, onPageChange }) {
         ))}
         <li
           className="page-item page-item-right"
-          onClick={() => onPageChange(currentPage + 1)}
+          onClick={() =>
+            onPageChange(
+              currentPage != totalPages ? currentPage + 1 : totalPages
+            )
+          }
         >
           Siguiente
         </li>

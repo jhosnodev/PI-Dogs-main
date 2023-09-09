@@ -1,11 +1,37 @@
-import React from "react";
-import "./Search.css";
 
-function Search() {
+import "./Search.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getDogByName } from "../../redux/actions";
+
+function Search({search, setSearch}) {
+  const dispatch = useDispatch();
+  
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    console.log(search);
+  };
+
+  const handleSendName = () => {
+/*     console.log("envio, segun"); */
+    dispatch(getDogByName(search));
+  };
+  const result = useSelector((state) => state.search);
+  console.log(result);
+
   return (
     <div className="search___main">
-      <input placeholder="Buscar por raza" className="search___input" />
-      <button className="btn___hightlight">
+      <input
+        placeholder="Buscar por raza..."
+        className="search___input"
+        type="search"
+        value={search}
+        onChange={handleSearch}
+      />
+      <button
+        className="btn___hightlight"
+        onClick={handleSendName}
+        value={search}
+      >
         <svg
           width="20px"
           height="20px"

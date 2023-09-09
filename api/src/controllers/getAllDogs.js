@@ -20,7 +20,7 @@ const getAllDogs = async (req, res) => {
  */
   if (name) {
     let resultName = Object.values(allMyDogs).filter(
-      (dog) => dog["name"].toLowerCase() == name.toLowerCase()
+      (dog) => dog["name"].toLowerCase().includes(name.toLowerCase())
     );
 
     res.status(200).send(resultName);

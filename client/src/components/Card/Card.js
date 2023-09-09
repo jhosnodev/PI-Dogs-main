@@ -6,7 +6,7 @@ function Card({ name, image, temperament, bred_for, weight, id, breed }) {
   const URL = `https://cdn2.thedogapi.com/images/${image}.jpg`;
   return (
     <article className="card___container" key={id}>
-      <Link to={`dog/${name}`}>
+      <Link to={`dog/${id}`}>
         <div
           className="card___img-container"
           style={{
@@ -34,22 +34,22 @@ function Card({ name, image, temperament, bred_for, weight, id, breed }) {
           </svg>{" "}
           {weight.imperial}
         </span>
-        <Link to={`dog/${name}`}>
+        <Link to={`dog/${id}`}>
           <h2>{name}</h2>
         </Link>
         <p>
           {bred_for?.slice(0, 50)}
           {"... "}
           {
-            <Link className="card___see-more" to={`dog/${name}`}>
+            <Link className="card___see-more" to={`dog/${id}`}>
               ver más
             </Link>
           }
         </p>
         <ul className="card___temp-list">
+          {/*   .slice(0, 2) */}
           {temperament
             ?.split(", ")
-            .slice(0, 2)
             .map((temp) => (
               <li className="card___span-temp" key={temp}>
                 {temp}{" "}

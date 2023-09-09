@@ -20,6 +20,11 @@ export const reducer = (state = initialState, action) => {
         ...state,
         search: action.payload,
       };
+    case "CLEAR_GET_DOG_BY_NAME":
+      return {
+        ...state,
+        search: action.payload,
+      };
     case "GET_DOG_BY_ID":
       return {
         ...state,
@@ -55,6 +60,11 @@ export const reducer = (state = initialState, action) => {
         ...state,
         temps: action.payload,
       };
+      case "RESET_SEARCH":
+        return {
+          ...state,
+          search: []
+        }
 
     default:
       return { ...state };

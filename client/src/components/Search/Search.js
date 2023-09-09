@@ -8,7 +8,7 @@ function Search({search, setSearch}) {
   
   const handleSearch = (e) => {
     setSearch(e.target.value);
-    console.log(search);
+/*     console.log(search); */
   };
 
   const handleSendName = () => {
@@ -16,7 +16,7 @@ function Search({search, setSearch}) {
     dispatch(getDogByName(search));
   };
   const result = useSelector((state) => state.search);
-  console.log(result);
+/*   console.log(result); */
 
   return (
     <div className="search___main">

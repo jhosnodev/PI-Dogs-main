@@ -10,7 +10,7 @@ export const Home = () => {
     <main className="home___main">
       <Search setSearch={setSearch} search={search} />
       <Filter />
-      <List search={search} />
+      <List search={search} setSearch={setSearch} />
     </main>
   );
 };

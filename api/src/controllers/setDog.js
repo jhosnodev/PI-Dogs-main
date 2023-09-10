@@ -21,7 +21,7 @@ const setDog = async (req, res) => {
       weight: weight,
       life_span: life_span,
       bred_for: bred_for,
-      imagen: image.data.message,
+      image: image.data.message,
     });
     temperament.map(async (temp) => {
       const findTemp = await Temperament.findAll({
@@ -31,8 +31,7 @@ const setDog = async (req, res) => {
       console.log(findTemp); */
       createDog.addTemperament(findTemp);
     });
-     /*    console.log(createDog);
-        console.log(createDog); */
+
         console.log(createDog);
 
     res.status(200).send(createDog);

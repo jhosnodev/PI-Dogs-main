@@ -10,7 +10,7 @@ const getAllData = async () => {
   /*   const name = req.query.name; */
   const resultApi = await allDogsApi();
   const result = await allDogs();
-  return { ...result, ...resultApi };
+  return { ...result };
 };
 
 const getAllDogs = async (req, res) => {
@@ -43,7 +43,7 @@ const allDogsApi = async () => {
         life_span: dog.life_span,
         bred_for: dog.bred_for,
         origin: dog.origin,
-        temperament: dog.temperament ? dog.temperament.split(", ") : "unknow",
+        temperaments: dog.temperament ? dog.temperament.split(", ") : "unknow",
       };
     });
     return result;

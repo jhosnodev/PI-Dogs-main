@@ -117,3 +117,38 @@ code {
 .btn___hightlight:focus {
   background-color: #67666685;
 }
+
+.btn___comeback {
+  background: #fd7979dc;
+  border-radius: 50%;
+  border: none;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  border: 1px solid transparent;
+}
+.btn___comeback:focus {
+  background-color: #fd595985;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.btn___comeback:hover {
+  transform: translateY(-1px);
+}
+
+.btn___comeback:active {
+  background-color: #f1a9a9;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}

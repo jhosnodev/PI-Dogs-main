@@ -1,21 +1,17 @@
-
 import "./Search.css";
 import { useDispatch } from "react-redux";
 import { getDogByName } from "../../redux/actions";
 
-function Search({search, setSearch}) {
+function Search({ search, setSearch }) {
   const dispatch = useDispatch();
-  
+
   const handleSearch = (e) => {
     setSearch(e.target.value);
-
   };
 
   const handleSendName = () => {
-
     dispatch(getDogByName(search));
   };
-
 
   return (
     <div className="search___main">

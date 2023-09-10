@@ -12,8 +12,8 @@ function List({ search, setSearch }) {
     dispatch(getDogs());
   }, [dispatch]);
   const allDogs = useSelector((state) => state.dogs);
-  const filter = useSelector((state) => state.filter);
-/*   console.log(allDogs) */
+
+   console.log(allDogs) 
 
   const searchResult = useSelector((state) => state.search);
   /* console.log(allDogs) */
@@ -55,7 +55,7 @@ function List({ search, setSearch }) {
             id={dog.id}
             name={dog.name}
             image={dog.image}
-            temperament={dog.temperament}
+            temperaments={dog.temperaments}
             bred_for={dog.bred_for}
             weight={dog.weight}
             breed={dog.breed}

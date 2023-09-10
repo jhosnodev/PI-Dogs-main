@@ -79,10 +79,10 @@ export const reducer = (state = initialState, action) => {
                   .includes(action.payload)
               ),
       };
-    case "FILTER_DATA":
+    case "FILTER_SOURCE":
       return {
         ...state,
-        dogs:  Object.values(state.allDogs).filter(dog => dog.id.includes('-')),
+        dogs:  action.payload === 'cloud' ? Object.values(state.allDogs).filter(dog => typeof dog.id === 'number') : Object.values(state.allDogs).filter(dog => typeof dog.id === 'string'),
       };
     case "ORDER_ALPHA":
       return {

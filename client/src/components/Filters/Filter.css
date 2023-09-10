@@ -19,7 +19,8 @@
   text-align: left;
 }
 .filter___weight-control button,
-.filter___alphabect-control button {
+.filter___alphabect-control button,
+.filter___source-control button {
   display: inline-block;
   /*  margin: 0.2rem; */
   border: 1px solid rgb(220 220 220 / 60%);
@@ -27,7 +28,8 @@
   border-radius: 0 8px 8px 0;
 }
 .filter___weight-control button:first-child,
-.filter___alphabect-control button:first-child {
+.filter___alphabect-control button:first-child,
+.filter___source-control button:first-child {
   border-radius: 8px 0 0 8px;
 }
 .filter___temperaments-control select {

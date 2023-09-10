@@ -75,3 +75,9 @@ export const filterTemps = (temp) => {
     payload: temp,
   };
 };
+export const filterSource = (source) => {
+  return {
+    type: "FILTER_SOURCE",
+    payload: source,
+  };
+};

@@ -6,6 +6,7 @@ import {
   filterTemps,
   orderAlpha,
   orderNumber,
+  filterSource,
 } from "../../redux/actions";
 
 function Filters() {
@@ -26,6 +27,9 @@ function Filters() {
 
   const handleTempFilter = (e) => {
     dispatch(filterTemps(e.target.value));
+  };
+  const handleSourceFilter = (source) => {
+    dispatch(filterSource(source));
   };
 
   return (
@@ -98,6 +102,56 @@ function Filters() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path d="M16 160h48v304a16 16 0 0 0 16 16h32a16 16 0 0 0 16-16V160h48c14.21 0 21.38-17.24 11.31-27.31l-80-96a16 16 0 0 0-22.62 0l-80 96C-5.35 142.74 1.78 160 16 160zm272 64h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16h-56l61.26-70.45A32 32 0 0 0 432 65.63V48a16 16 0 0 0-16-16H288a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h56l-61.26 70.45A32 32 0 0 0 272 190.37V208a16 16 0 0 0 16 16zm159.06 234.62l-59.27-160A16 16 0 0 0 372.72 288h-41.44a16 16 0 0 0-15.07 10.62l-59.27 160A16 16 0 0 0 272 480h24.83a16 16 0 0 0 15.23-11.08l4.42-12.92h71l4.41 12.92A16 16 0 0 0 407.16 480H432a16 16 0 0 0 15.06-21.38zM335.61 400L352 352l16.39 48z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div className="filter___source-control">
+        <div>
+          <button
+            className="btn___hightlight btn___primary"
+            id="as"
+            value="as"
+            onClick={() => handleSourceFilter("cloud")}
+          >
+            <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M6.28571 19C3.91878 19 2 17.1038 2 14.7647C2 12.4256 3.91878 10.5294 6.28571 10.5294C6.56983 10.5294 6.8475 10.5567 7.11616 10.6089M14.381 8.02721C14.9767 7.81911 15.6178 7.70588 16.2857 7.70588C16.9404 7.70588 17.5693 7.81468 18.1551 8.01498M7.11616 10.6089C6.88706 9.9978 6.7619 9.33687 6.7619 8.64706C6.7619 5.52827 9.32028 3 12.4762 3C15.4159 3 17.8371 5.19371 18.1551 8.01498M7.11616 10.6089C7.68059 10.7184 8.20528 10.9374 8.66667 11.2426M18.1551 8.01498C20.393 8.78024 22 10.8811 22 13.3529C22 16.0599 20.0726 18.3221 17.5 18.8722"
+                stroke="#000000"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+              <path
+                d="M12 22V16M12 22L14 20M12 22L10 20"
+                stroke="#000000"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+          <button
+            className="btn___hightlight btn___primary"
+            id="des"
+            value="des"
+            onClick={() => handleSourceFilter("DB")}
+          >
+            <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M5 12V18C5 18 5 21 12 21C19 21 19 18 19 18V12"
+                stroke="#000000"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M5 6V12C5 12 5 15 12 15C19 15 19 12 19 12V6"
+                stroke="#000000"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M12 3C19 3 19 6 19 6C19 6 19 9 12 9C5 9 5 6 5 6C5 6 5 3 12 3Z"
+                stroke="#000000"
+                strokeWidth="1.5"
+              />
             </svg>
           </button>
         </div>

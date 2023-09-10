@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./Filter.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperament, filterTemps, orderAlpha, orderNumber } from "../../redux/actions";
@@ -13,6 +13,7 @@ function Filters() {
   const allTemps = useSelector((state) => state.temps);
   const handleSortWeight = (order) => {
     console.log(order);
+    dispatch(orderNumber(order));
 
   };
 

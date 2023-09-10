@@ -1,6 +1,6 @@
 
 import "./Search.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getDogByName } from "../../redux/actions";
 
 function Search({search, setSearch}) {
@@ -15,8 +15,7 @@ function Search({search, setSearch}) {
 /*     console.log("envio, segun"); */
     dispatch(getDogByName(search));
   };
-  const result = useSelector((state) => state.search);
-/*   console.log(result); */
+
 
   return (
     <div className="search___main">

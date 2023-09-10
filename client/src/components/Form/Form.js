@@ -36,7 +36,7 @@ function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (Object.values(error).length === 0) {
+    if (Object.values(error).length === 0 && temps.length > 0 ) {
       const allValues = {
         name: dogData.name.trim(),
         bred_for: dogData.bred_for.trim(),

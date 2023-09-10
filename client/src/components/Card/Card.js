@@ -47,12 +47,13 @@ function Card({ name, image, temperament, bred_for, weight, id, breed }) {
           }
         </p>
         <ul className="card___temp-list">
-          {/*   .slice(0, 2) */}
-          {temperament?.map((temp) => (
-            <li className="card___span-temp" key={temp}>
-              {temp}{" "}
-            </li>
-          ))}
+          {!temperament
+            ? "KGASTE MI LOKA "
+            : temperament?.map((temp) => (
+                <li className="card___span-temp" key={temp}>
+                  {temp}{" "}
+                </li>
+              ))}
         </ul>
       </div>
     </article>

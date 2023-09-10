@@ -1,10 +1,13 @@
+import { getTemperament } from "./actions";
+
 const initialState = {
+  allDogs: [],
   dogs: [],
   fav: [],
   temps: [],
   search: [],
   detail: {},
-  response: {},
+  filter: {},
   alert: {},
 };
 
@@ -14,6 +17,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         dogs: action.payload,
+        allDogs: action.payload,
       };
     case "GET_DOG_BY_NAME":
       return {
@@ -68,15 +72,20 @@ export const reducer = (state = initialState, action) => {
     case "FILTER_TEMP":
       return {
         ...state,
-        dogs: Object.values(state.dogs).filter((dog) =>
-          dog.temperament?.includes(action.payload)
-        ),
+        /*         dogs: Object.values(state.dogs).filter((dog) =>
+          Object.values(dog.temperament).includes(action.payload) */
+        dogs:
+          action.payload === "all"
+            ? state.allDogs
+            : Object.values(state.allDogs).filter((dog) =>
+                dog["temperament"].includes(action.payload)
+              ),
       };
     case "ORDER_ALPHA":
       return {
         ...state,
-        dogs: state.dogs.sort((a, b) =>
-          action.payload === "A" ? a.id - b.id : b.id - a.id
+        dogs: Object.values(state.allDogs).sort((a, b) =>
+          action.payload === "as" ? a.name - b.name : b.name - a.name
         ),
       };
     case "ORDER_NUMBER":

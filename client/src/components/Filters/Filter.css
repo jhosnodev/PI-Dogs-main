@@ -4,6 +4,11 @@
   justify-content: space-around;
   align-items: center;
 }
+/* @media screen and (max-width: 470px) {
+  .filter___main {
+    flex-direction: column;
+  }
+} */
 .filter___weight-control,
 .filter___alphabect-control,
 .filter___temperaments-control {
@@ -19,13 +24,11 @@
   /*  margin: 0.2rem; */
   border: 1px solid rgb(220 220 220 / 60%);
   margin-right: 0;
-  border-radius: 0 8px  8px 0;
-  
+  border-radius: 0 8px 8px 0;
 }
 .filter___weight-control button:first-child,
 .filter___alphabect-control button:first-child {
- border-radius: 8px 0 0 8px;
- 
+  border-radius: 8px 0 0 8px;
 }
 .filter___temperaments-control select {
   color: #141110;
@@ -44,10 +47,10 @@
   display: inline-block;
 }
 .filter___temperaments-control select:focus-visible {
-    outline: #f1a9a9 auto 1px;
+  outline: #f1a9a9 auto 1px;
 }
 .filter___weight-control label,
 .filter___alphabect-control label,
 .filter___temperaments-control label {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }

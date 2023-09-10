@@ -12,7 +12,8 @@ function List({ search, setSearch }) {
     dispatch(getDogs());
   }, [dispatch]);
   const allDogs = useSelector((state) => state.dogs);
-  console.log(allDogs)
+  const filter = useSelector((state) => state.filter);
+/*   console.log(allDogs) */
 
   const searchResult = useSelector((state) => state.search);
   /* console.log(allDogs) */
@@ -48,7 +49,7 @@ function List({ search, setSearch }) {
         </button>
       </div>
       <div className="list___container">
-{/*         {currentDogs.map((dog) => (
+        {currentDogs.map((dog) => (
           <Card
             key={dog.id}
             id={dog.id}
@@ -59,7 +60,7 @@ function List({ search, setSearch }) {
             weight={dog.weight}
             breed={dog.breed}
           />
-        ))} */}
+        ))}
         <Pagination
           dogsPerPage={dogsPerPage}
           totalItems={dogs.length}

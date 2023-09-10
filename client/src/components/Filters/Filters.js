@@ -1,41 +1,41 @@
 import React, { useState, useEffect } from "react";
 import "./Filter.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getTemperament, filterTemps } from "../../redux/actions";
-
+import { getTemperament, filterTemps, orderAlpha, orderNumber } from "../../redux/actions";
 
 function Filters() {
   const dispatch = useDispatch();
-  const [temp, setTemp] = useState('')
+
   useEffect(() => {
     dispatch(getTemperament());
   }, [dispatch]);
+
   const allTemps = useSelector((state) => state.temps);
+  const handleSortWeight = (order) => {
+    console.log(order);
 
-  const handleSortWeight = (e) => {
-    console.log(e.target.id);
   };
 
-  const handleSortBreed = (e) => {
-    console.log(e.target.id);
+  const handleSortBreed = (order) => {
+    console.log(order);
+    dispatch(orderAlpha(order));
   };
 
-  const handleTemps = (e)=>{
-    setTemp(e.target.value)
-    console.log(e.target.value)
-    dispatch(filterTemps(temp))
-  }
+  const handleTempFilter = (e) => {
+/*     console.log(e.target.value); */
+
+    dispatch(filterTemps(e.target.value));
+  };
 
   return (
     <div className="filter___main">
       <div className="filter___weight-control">
-    
         <div>
           <button
             className="btn___hightlight btn___primary"
-            id="numerico_ascendiente"
-            value="numerico_ascendiente"
-            onClick={handleSortWeight}
+            id="as"
+            value="as"
+            onClick={()=> handleSortWeight('as')}
           >
             <svg
               fill="#000000"
@@ -49,9 +49,9 @@ function Filters() {
           </button>
           <button
             className="btn___hightlight btn___primary"
-            id="numerico_descendiente"
-            value="numerico_descendiente"
-            onClick={handleSortWeight}
+            id="des"
+            value="des"
+            onClick={()=> handleSortWeight('des')}
           >
             <svg
               fill="#000000"
@@ -69,9 +69,9 @@ function Filters() {
         <div>
           <button
             className="btn___hightlight btn___primary"
-            id="alpha_ascendiente"
-            value="alpha_ascendiente"
-            onClick={handleSortBreed}
+            id="as"
+            value="as"
+            onClick={()=> handleSortBreed('as')}
           >
             <svg
               fill="#000000"
@@ -85,9 +85,9 @@ function Filters() {
           </button>
           <button
             className="btn___hightlight btn___primary"
-            id="alpha_descendiente"
-            value="alpha_descendiente"
-            onClick={handleSortBreed}
+            id="des"
+            value="des"
+            onClick={()=> handleSortBreed('des')}
           >
             <svg
               fill="#000000"
@@ -102,13 +102,15 @@ function Filters() {
         </div>
       </div>
       <div className="filter___temperaments-control">
-        <select onChange={handleTemps} value={temp}>
-          <option>Temperamento</option>
-          {allTemps.map((temp) => (
-            <option value={temp.name} key={temp.id}>
-              {temp.name}
-            </option>
-          ))}
+        <select onChange={(e) => handleTempFilter(e)}>
+          <option value="all">All Temperaments</option>
+          {allTemps.map((temp) => {
+            return (
+              <option value={temp.name} key={temp.id}>
+                {temp.name}
+              </option>
+            );
+          })}
         </select>
       </div>
     </div>

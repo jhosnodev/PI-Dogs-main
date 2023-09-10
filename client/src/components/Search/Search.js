@@ -8,11 +8,11 @@ function Search({search, setSearch}) {
   
   const handleSearch = (e) => {
     setSearch(e.target.value);
-/*     console.log(search); */
+
   };
 
   const handleSendName = () => {
-/*     console.log("envio, segun"); */
+
     dispatch(getDogByName(search));
   };
 

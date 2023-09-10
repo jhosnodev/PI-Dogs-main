@@ -11,23 +11,20 @@ const getAllData = async () => {
   const resultApi = await allDogsApi();
   const result = await allDogs();
   return result.concat(resultApi);
-
 };
 
 const getAllDogs = async (req, res) => {
   const name = req.query.name;
   const allMyDogs = await getAllData();
- /*  console.log(allMyDogs);
- */
+
   if (name) {
-    let resultName = Object.values(allMyDogs).filter(
-      (dog) => dog["name"].toLowerCase().includes(name.toLowerCase())
+    let resultName = Object.values(allMyDogs).filter((dog) =>
+      dog["name"].toLowerCase().includes(name.toLowerCase())
     );
 
     res.status(200).send(resultName);
   } else {
     res.status(200).send(allMyDogs);
-    /*  res.status(200).send({...result}); */
   }
 };
 
@@ -44,7 +41,11 @@ const allDogsApi = async () => {
         life_span: dog.life_span,
         bred_for: dog.bred_for,
         origin: dog.origin,
-        temperaments: dog.temperament ? dog.temperament.split(", ").map(temp =>{return {name: temp}}) : "unknow",
+        temperaments: dog.temperament
+          ? dog.temperament.split(", ").map((temp) => {
+              return { name: temp };
+            })
+          : "unknow",
       };
     });
     return result;
@@ -63,7 +64,7 @@ const allDogs = async () => {
         },
       },
     });
-    console.log(allDogsDb);
+
     return allDogsDb;
   } catch (error) {
     console.error(`Download error: ${error.message}`);

@@ -105,3 +105,5 @@ dist
 
 # package-lock.json
 package-lock.json
+client/src/data/pivot.js
+quiz.md

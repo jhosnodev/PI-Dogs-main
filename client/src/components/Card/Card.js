@@ -2,8 +2,8 @@ import React from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
 
-function Card({ name, image, temperament, bred_for, weight, id, breed }) {
-  const URL = ``;
+function Card({ name, image, temperaments, bred_for, weight, id, breed }) {
+
   return (
     <article className="card___container" key={id}>
       <Link to={`dog/${id}`}>
@@ -47,9 +47,9 @@ function Card({ name, image, temperament, bred_for, weight, id, breed }) {
           }
         </p>
         <ul className="card___temp-list">
-          {!temperament
-            ? "KGASTE MI LOKA "
-            : temperament?.map((temp) => (
+          {!temperaments
+            ? "No hay nada que mostrar "
+            : temperaments?.map((temp) => (
                 <li className="card___span-temp" key={temp}>
                   {temp}{" "}
                 </li>

@@ -1,7 +1,7 @@
 const validations = (inputs) => {
   const msg = [];
 
-  /* console.log(inputs); */
+
 
   const regexNum = /[^0]+$/;
   /*   const regexNum = /^[1-9]\d*$/; */

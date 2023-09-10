@@ -13,10 +13,9 @@ function List({ search, setSearch }) {
   }, [dispatch]);
   const allDogs = useSelector((state) => state.dogs);
 
-   console.log(allDogs) 
+
 
   const searchResult = useSelector((state) => state.search);
-  /* console.log(allDogs) */
 
   const handleEaraser = () => {
     dispatch({ type: "RESET_SEARCH" });
@@ -32,6 +31,7 @@ function List({ search, setSearch }) {
   const indexOfLastDog = currentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
   const currentDogs = dogs.slice(indexOfFirstDog, indexOfLastDog);
+
 
   return (
     <div className="list___main">

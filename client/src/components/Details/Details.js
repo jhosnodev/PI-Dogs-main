@@ -15,7 +15,7 @@ function Details() {
   }, [dispatch, id]);
   const detail = useSelector((state) => state.detail);
   const dog = detail;
-  /* console.log(dog); */
+
   return (
     <article className="details___main">
       <div
@@ -41,7 +41,11 @@ function Details() {
         </Link>
         <button className="details___fav-buttom">❤</button>
 
-        <h2>{dog?.name}</h2>
+        <h2>
+          {dog?.id}
+          {" | "}
+          {dog?.name}
+        </h2>
         <div className="details___tag">
           <h3>Peso (Kg)</h3>
           <span>
@@ -58,7 +62,7 @@ function Details() {
         </div>
         <div className="details___tag">
           <h3>Origen</h3>
-          <p>{dog.origin ? dog.origin : 'Desconocido'}</p>
+          <p>{dog.origin ? dog.origin : "Desconocido"}</p>
         </div>
         <div className="details___tag">
           <h3>Raza para </h3>
@@ -69,9 +73,8 @@ function Details() {
           <p>{dog?.life_span}</p>
         </div>
         <div className="details___tag">
-        <h3>Altura (Cm)</h3>
+          <h3>Altura (Cm)</h3>
           <p>{dog?.height}</p>
-
         </div>
         <div className="details___tag">
           <h3>Temperamento</h3>

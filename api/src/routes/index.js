@@ -19,10 +19,16 @@ router.get("/dogs", getAllDogs);
 //*Traer perritus por ID
 router.get("/dogs/:id", getDogId);
 
-//*Funciona pero falta subir antes los temps
+//*Funciona 
 router.get("/temperaments", setTemperaments);
 
-//! Create dogs
+//* Create dogs
+router.post("/dogs", setDog);
+
+//! Update dogs
+router.post("/dogs", setDog);
+
+//! Delete dogs
 router.post("/dogs", setDog);
 
 module.exports = router;

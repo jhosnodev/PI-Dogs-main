@@ -8,7 +8,6 @@ const getDogId = async (req, res) => {
   try {
     const data = await getAllData();
     let result = Object.values(data).filter((dog) => dog["id"] == id);
-    console.log(result);
     res.status(200).json(result);
   } catch (error) {
     console.error(`Download error: ${error.message}`);

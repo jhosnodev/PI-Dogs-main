@@ -38,7 +38,6 @@ function Filters() {
         <div>
           <button
             className="btn___hightlight btn___primary"
-
             onClick={() => handleSortWeight("des")}
             title="Ordenar por peso de manera Descendente ⬇"
           >
@@ -54,7 +53,6 @@ function Filters() {
           </button>
           <button
             className="btn___hightlight btn___primary"
-     
             onClick={() => handleSortWeight("as")}
             title="Ordenar por peso de manera Ascendente ⬆"
           >
@@ -74,7 +72,6 @@ function Filters() {
         <div>
           <button
             className="btn___hightlight btn___primary"
-      
             onClick={() => handleSortBreed("des")}
             title="Ordenar por nombre de raza de manera Descendente ⬇"
           >
@@ -90,7 +87,6 @@ function Filters() {
           </button>
           <button
             className="btn___hightlight btn___primary"
-      
             onClick={() => handleSortBreed("as")}
             title="Ordenar por nombre de raza de manera Ascendente ⬆"
           >
@@ -110,7 +106,6 @@ function Filters() {
         <div>
           <button
             className="btn___hightlight btn___primary"
-        
             onClick={() => handleSourceFilter("cloud")}
             title="Monstrar perritos de la API"
           >
@@ -134,7 +129,6 @@ function Filters() {
             className="btn___hightlight btn___primary"
             onClick={() => handleSourceFilter("DB")}
             title="Monstrar solo tus perritos"
-
           >
             <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none">
               <path

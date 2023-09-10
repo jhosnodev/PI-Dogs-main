@@ -82,7 +82,14 @@ export const reducer = (state = initialState, action) => {
     case "FILTER_SOURCE":
       return {
         ...state,
-        dogs:  action.payload === 'cloud' ? Object.values(state.allDogs).filter(dog => typeof dog.id === 'number') : Object.values(state.allDogs).filter(dog => typeof dog.id === 'string'),
+        dogs:
+          action.payload === "cloud"
+            ? Object.values(state.allDogs).filter(
+                (dog) => typeof dog.id === "number"
+              )
+            : Object.values(state.allDogs).filter(
+                (dog) => typeof dog.id === "string"
+              ),
       };
     case "ORDER_ALPHA":
       return {
@@ -100,7 +107,9 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         dogs: Object.values(state.allDogs).sort((a, b) =>
-          action.payload === "as" ? a.weight.split(' - ')[0] - b.weight.split(' - ')[0] : b.weight.split(' - ')[0] - a.weight.split(' - ')[0]
+          action.payload === "as"
+            ? a.weight.split(" - ")[0] - b.weight.split(" - ")[0]
+            : b.weight.split(" - ")[0] - a.weight.split(" - ")[0]
         ),
       };
 

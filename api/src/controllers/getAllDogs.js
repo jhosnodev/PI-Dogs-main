@@ -10,7 +10,8 @@ const getAllData = async () => {
   /*   const name = req.query.name; */
   const resultApi = await allDogsApi();
   const result = await allDogs();
-  return { ...result};
+  return result.concat(resultApi);
+
 };
 
 const getAllDogs = async (req, res) => {

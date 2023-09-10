@@ -38,9 +38,9 @@ function Filters() {
         <div>
           <button
             className="btn___hightlight btn___primary"
-            id="as"
-            value="as"
-            onClick={() => handleSortWeight("as")}
+
+            onClick={() => handleSortWeight("des")}
+            title="Ordenar por peso de manera Descendente ⬇"
           >
             <svg
               fill="#000000"
@@ -54,9 +54,9 @@ function Filters() {
           </button>
           <button
             className="btn___hightlight btn___primary"
-            id="des"
-            value="des"
-            onClick={() => handleSortWeight("des")}
+     
+            onClick={() => handleSortWeight("as")}
+            title="Ordenar por peso de manera Ascendente ⬆"
           >
             <svg
               fill="#000000"
@@ -74,9 +74,9 @@ function Filters() {
         <div>
           <button
             className="btn___hightlight btn___primary"
-            id="as"
-            value="as"
-            onClick={() => handleSortBreed("as")}
+      
+            onClick={() => handleSortBreed("des")}
+            title="Ordenar por nombre de raza de manera Descendente ⬇"
           >
             <svg
               fill="#000000"
@@ -90,9 +90,9 @@ function Filters() {
           </button>
           <button
             className="btn___hightlight btn___primary"
-            id="des"
-            value="des"
-            onClick={() => handleSortBreed("des")}
+      
+            onClick={() => handleSortBreed("as")}
+            title="Ordenar por nombre de raza de manera Ascendente ⬆"
           >
             <svg
               fill="#000000"
@@ -110,9 +110,9 @@ function Filters() {
         <div>
           <button
             className="btn___hightlight btn___primary"
-            id="as"
-            value="as"
+        
             onClick={() => handleSourceFilter("cloud")}
+            title="Monstrar perritos de la API"
           >
             <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none">
               <path
@@ -132,9 +132,9 @@ function Filters() {
           </button>
           <button
             className="btn___hightlight btn___primary"
-            id="des"
-            value="des"
             onClick={() => handleSourceFilter("DB")}
+            title="Monstrar solo tus perritos"
+
           >
             <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none">
               <path

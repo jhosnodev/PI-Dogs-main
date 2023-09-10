@@ -30,6 +30,7 @@ function Search({search, setSearch}) {
         className="btn___hightlight"
         onClick={handleSendName}
         value={search}
+        accessKey=""
       >
         <svg
           width="20px"

@@ -70,28 +70,37 @@ export const reducer = (state = initialState, action) => {
     case "FILTER_TEMP":
       return {
         ...state,
-        /*         dogs: Object.values(state.dogs).filter((dog) =>
-          Object.values(dog.temperament).includes(action.payload) */
         dogs:
           action.payload === "all"
             ? state.allDogs
             : Object.values(state.allDogs).filter((dog) =>
-                dog["temperament"].includes(action.payload)
+                Object.values(dog["temperaments"])
+                  .map((temp) => temp.name)
+                  .includes(action.payload)
               ),
+      };
+    case "FILTER_DATA":
+      return {
+        ...state,
+        dogs:  Object.values(state.allDogs).filter(dog => dog.id.includes('-')),
       };
     case "ORDER_ALPHA":
       return {
         ...state,
-        dogs: Object.values(state.allDogs).sort(
-          (a, b) => a.name.localeCompare(b.name),
-          { reverse: action.payload === "as" ? false : true }
-        ),
+        dogs:
+          action.payload === "as"
+            ? Object.values(state.allDogs).sort((a, b) =>
+                a.name.localeCompare(b.name)
+              )
+            : Object.values(state.allDogs)
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .reverse(),
       };
     case "ORDER_NUMBER":
       return {
         ...state,
         dogs: Object.values(state.allDogs).sort((a, b) =>
-          action.payload === "as" ? a.id - b.id : b.id - a.id
+          action.payload === "as" ? a.weight.split(' - ')[0] - b.weight.split(' - ')[0] : b.weight.split(' - ')[0] - a.weight.split(' - ')[0]
         ),
       };
 

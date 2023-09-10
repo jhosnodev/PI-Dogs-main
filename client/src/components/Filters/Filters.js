@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import "./Filter.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getTemperament, filterTemps, orderAlpha, orderNumber } from "../../redux/actions";
+import {
+  getTemperament,
+  filterTemps,
+  orderAlpha,
+  orderNumber,
+} from "../../redux/actions";
 
 function Filters() {
   const dispatch = useDispatch();
@@ -12,19 +17,14 @@ function Filters() {
 
   const allTemps = useSelector((state) => state.temps);
   const handleSortWeight = (order) => {
-    console.log(order);
     dispatch(orderNumber(order));
-
   };
 
   const handleSortBreed = (order) => {
-    console.log(order);
     dispatch(orderAlpha(order));
   };
 
   const handleTempFilter = (e) => {
-/*     console.log(e.target.value); */
-
     dispatch(filterTemps(e.target.value));
   };
 
@@ -36,7 +36,7 @@ function Filters() {
             className="btn___hightlight btn___primary"
             id="as"
             value="as"
-            onClick={()=> handleSortWeight('as')}
+            onClick={() => handleSortWeight("as")}
           >
             <svg
               fill="#000000"
@@ -52,7 +52,7 @@ function Filters() {
             className="btn___hightlight btn___primary"
             id="des"
             value="des"
-            onClick={()=> handleSortWeight('des')}
+            onClick={() => handleSortWeight("des")}
           >
             <svg
               fill="#000000"
@@ -72,7 +72,7 @@ function Filters() {
             className="btn___hightlight btn___primary"
             id="as"
             value="as"
-            onClick={()=> handleSortBreed('as')}
+            onClick={() => handleSortBreed("as")}
           >
             <svg
               fill="#000000"
@@ -88,7 +88,7 @@ function Filters() {
             className="btn___hightlight btn___primary"
             id="des"
             value="des"
-            onClick={()=> handleSortBreed('des')}
+            onClick={() => handleSortBreed("des")}
           >
             <svg
               fill="#000000"

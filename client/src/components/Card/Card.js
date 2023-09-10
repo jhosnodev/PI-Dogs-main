@@ -3,7 +3,7 @@ import "./Card.css";
 import { Link } from "react-router-dom";
 
 function Card({ name, image, temperaments, bred_for, weight, id }) {
-console.log(temperaments.map(temp => temp.name));
+
   return (
     <article className="card___container" key={id}>
       <Link to={`dog/${id}`}>
@@ -47,15 +47,14 @@ console.log(temperaments.map(temp => temp.name));
           }
         </p>
         <ul className="card___temp-list">
-          {!temperaments
-            ? "No hay nada que mostrar "
-            : 
-            temperaments?.map((temp) => (
+          {(temperaments === "unknow" )
+            ? "No hay nada que mostrar"
+            : temperaments?.map((temp) => (
                 <li className="card___span-temp" key={temp.name}>
                   {temp.name}{" "}
                 </li>
               ))}
-        </ul> 
+        </ul>
       </div>
     </article>
   );

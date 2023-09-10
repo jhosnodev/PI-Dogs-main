@@ -1,8 +1,8 @@
 .alert___container {
   display: flex;
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 5rem;
+  right: 1rem;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;

@@ -77,8 +77,8 @@ function Details() {
           <h3>Temperamento</h3>
           <ul className="details___temp-list">
             {dog?.temperaments?.map((temp) => (
-              <li className="details___span-temp" key={temp}>
-                {temp}{" "}
+              <li className="details___span-temp" key={temp.name}>
+                {temp.name}{" "}
               </li>
             ))}
           </ul>

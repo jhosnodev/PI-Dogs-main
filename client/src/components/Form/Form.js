@@ -72,11 +72,10 @@ function Form() {
     const messages = validations(dogData);
     setError(messages);
   };
- 
+
   return (
     <div className="form___main">
-
-     <Alert type='success' msg='kgaste mi loka'/>
+      <Alert type="success" msg="mensaje generico" />
       <div className="form___dogs-info">
         <h2>{id ? "Editar" : "Nuevo Perritu"}</h2>
         <form onSubmit={handleSubmit}>

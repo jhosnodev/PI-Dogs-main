@@ -49,6 +49,7 @@ function List({ search, setSearch }) {
         </button>
       </div>
       <div className="list___container">
+       
         {currentDogs.map((dog) => (
           <Card
             key={dog.id}
@@ -58,9 +59,10 @@ function List({ search, setSearch }) {
             temperaments={dog.temperaments}
             bred_for={dog.bred_for}
             weight={dog.weight}
-            breed={dog.breed}
-          />
+      
+          /> 
         ))}
+      
         <Pagination
           dogsPerPage={dogsPerPage}
           totalItems={dogs.length}

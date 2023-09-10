@@ -1,5 +1,3 @@
-import { getTemperament } from "./actions";
-
 const initialState = {
   allDogs: [],
   dogs: [],
@@ -84,14 +82,17 @@ export const reducer = (state = initialState, action) => {
     case "ORDER_ALPHA":
       return {
         ...state,
-        dogs: Object.values(state.allDogs).sort((a, b) =>
-          action.payload === "as" ? a.name - b.name : b.name - a.name
+        dogs: Object.values(state.allDogs).sort(
+          (a, b) => a.name.localeCompare(b.name),
+          { reverse: action.payload === "as" ? false : true }
         ),
       };
     case "ORDER_NUMBER":
       return {
         ...state,
-        search: [],
+        dogs: Object.values(state.allDogs).sort((a, b) =>
+          action.payload === "as" ? a.id - b.id : b.id - a.id
+        ),
       };
 
     default:

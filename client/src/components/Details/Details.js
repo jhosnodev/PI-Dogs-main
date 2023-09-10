@@ -12,7 +12,7 @@ function Details() {
 
   useEffect(() => {
     dispatch(getDogByID(id));
-  }, [dispatch, id, useSelector]);
+  }, [dispatch, id]);
   const detail = useSelector((state) => state.detail);
   const dog = detail;
   /* console.log(dog); */
@@ -76,7 +76,7 @@ function Details() {
         <div className="details___tag">
           <h3>Temperamento</h3>
           <ul className="details___temp-list">
-            {dog?.temperament?.map((temp) => (
+            {dog?.temperaments?.map((temp) => (
               <li className="details___span-temp" key={temp}>
                 {temp}{" "}
               </li>

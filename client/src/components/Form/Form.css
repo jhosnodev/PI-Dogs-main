@@ -116,10 +116,14 @@
   grid-area: 2 / 3 / 3 / 4;
 }
 
-.card___span-temp {
+.form___span-temp span {
+  margin-left: 2rem;
+  cursor: pointer;
+}
+.form___span-temp {
   font-size: 0.6rem;
   padding: calc(0.4rem - 1px) calc(1.2rem - 1px);
-  background: #D6A699;
+  background: #fd7979dc;
   color: #f4f2f2;
   font-family: "Work Sans", sans-serif;
   font-weight: 700;
@@ -129,4 +133,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0.8em;
+}
+
+.form-multi-select-values{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+
 }

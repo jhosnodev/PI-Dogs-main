@@ -62,7 +62,7 @@ function Form() {
         life_span: `${dogData.life_min} - ${dogData.life_max}`,
         temperament: mytemps,
       };
-      console.log('paso');
+      console.log("paso");
       dispatch(setDog(allValues));
       setAlertMsg({
         msg: "¡Creado con éxito!",
@@ -99,7 +99,6 @@ function Form() {
     setError(messages);
   };
   const handleTemps = (e) => {
-
     mytemps.includes(e.target.value)
       ? console.log("ya esta")
       : setMyTemps([...mytemps, e.target.value]);
@@ -239,12 +238,14 @@ function Form() {
               ))}
             </select>
             <div>
-              Temperamentos seleccionados
-              {mytemps.map((tem) => (
-                <p key={tem} className="card___span-temp">
-                  {tem} <span onClick={() => handleDeleteTemps(tem)}>X</span>
-                </p>
-              ))}
+              <label>Temperamentos selecionados:</label>
+              <div className="form-multi-select-values">
+                {mytemps.map((tem) => (
+                  <p key={tem} className="form___span-temp">
+                    {tem} <span onClick={() => handleDeleteTemps(tem)}>X</span>
+                  </p>
+                ))}
+              </div>
             </div>
           </fieldset>
 

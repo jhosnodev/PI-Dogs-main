@@ -35,7 +35,7 @@ function Fav({ search, setSearch }) {
       <div className="fav___container">
     
         <div className="fav___container-card">
-          {currentDogs.map((dog) => (
+          {currentDogs.length === 0 ? 'Guarda algunos perritos para empezar 🐾' : currentDogs.map((dog) => (
             <Card
               key={dog.id}
               id={dog.id}
@@ -48,12 +48,13 @@ function Fav({ search, setSearch }) {
           ))}
         </div>
       </div>
+{      currentDogs.length === 0 ? '' : 
       <Pagination
         dogsPerPage={dogsPerPage}
         totalItems={dogs.length}
         currentPage={currentPage}
         onPageChange={setCurrentPage}
-      />
+      />}
     </div>
   );
 }

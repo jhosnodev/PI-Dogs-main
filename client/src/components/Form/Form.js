@@ -24,9 +24,9 @@ function Form() {
     msg: "",
     type: "",
   });
-  const [temps, setTemps] = useState([]);
+
   const [mytemps, setMyTemps] = useState([]);
-  console.log(mytemps);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -99,7 +99,7 @@ function Form() {
     setError(messages);
   };
   const handleTemps = (e) => {
-    console.log(e.target.value);
+
     mytemps.includes(e.target.value)
       ? console.log("ya esta")
       : setMyTemps([...mytemps, e.target.value]);

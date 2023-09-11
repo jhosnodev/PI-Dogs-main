@@ -136,11 +136,17 @@
   margin: 0.8em;
 }
 
-.form-multi-select-values{
+.form-multi-select-values {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   align-content: center;
   justify-content: flex-start;
+  width: 100%;
+}
 
+.form___temperamentos-seleccionados {
+  width: 100%;
+  text-align: left;
+  margin-top: 1rem;
 }

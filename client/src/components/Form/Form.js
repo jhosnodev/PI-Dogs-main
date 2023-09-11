@@ -237,7 +237,7 @@ function Form() {
                 </option>
               ))}
             </select>
-            <div>
+            <div className="form___temperamentos-seleccionados">
               <label>Temperamentos selecionados:</label>
               <div className="form-multi-select-values">
                 {mytemps.map((tem) => (

@@ -1,7 +1,7 @@
 const initialState = {
   allDogs: [],
   dogs: [],
-  fav: [],
+  favs: [],
   temps: [],
   search: [],
   detail: {},
@@ -37,15 +37,15 @@ export const reducer = (state = initialState, action) => {
         ...state,
         temps: action.payload,
       };
-    case "ADD_FAVS":
+    case "ADD_FAV":
       return {
         ...state,
-        temps: action.payload,
+        favs: [...state.favs, action.payload],
       };
-    case "REMOVE_FAVS":
+    case "REMOVE_FAV":
       return {
         ...state,
-        temps: action.payload,
+        favs: state.favs.filter((fav) => fav.id !== action.payload),
       };
     case "ADD_DOG":
       return {

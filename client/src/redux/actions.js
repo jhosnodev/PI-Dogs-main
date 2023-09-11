@@ -81,3 +81,16 @@ export const filterSource = (source) => {
     payload: source,
   };
 };
+export const addFav = (doggi) => {
+  //const endpointProduction = 'http://'
+  return {
+    type: "ADD_FAV",
+    payload: doggi,
+  };
+};
+export const removeFav = (id) => {
+  return {
+    type: "REMOVE_FAV",
+    payload: id,
+  };
+};

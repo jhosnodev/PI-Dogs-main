@@ -1,27 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
+import { addFav, removeFav } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 function Card({ name, image, temperaments, bred_for, weight, id }) {
+  const myFavorites = useSelector((state) => state.favs);
+  console.log(myFavorites);
+  const [isFav, setIsFav] = useState(false);
 
+  const dispatch = useDispatch();
+  const handleFavorite = () => {
+    console.log(isFav);
+    if (isFav) {
+      setIsFav(false);
+      dispatch(removeFav(id));
+    } else {
+      setIsFav(true);
+      dispatch(addFav({ name, image, temperaments, bred_for, weight, id }));
+    }
+  };
+  useEffect(() => {
+    myFavorites?.forEach((fav) => {
+      if (fav.id === id) {
+        setIsFav(true);
+      }
+    });
+  }, [myFavorites, id]);
   return (
     <article className="card___container" key={id}>
-      <Link to={`dog/${id}`}>
-        <div
-          className="card___img-container"
-          style={{
-            backgroundImage: `url("${image}")`,
+      <div
+        className="card___img-container"
+        style={{
+          backgroundImage: `url("${image}")`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundOrigin: "content-box",
+          backgroundSize: "cover",
+        }}
+      >
+        {isFav ? (
+          <button className="card___fav-buttom" onClick={handleFavorite}>
+            💗
+          </button>
+        ) : (
+          <button className="card___fav-buttom" onClick={handleFavorite}>
+            🤍
+          </button>
+        )}
+        {/* <img src={URL} alt={name} /> */}
+      </div>
 
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundOrigin: "content-box",
-            backgroundSize: "cover",
-          }}
-        >
-          <button className="card___fav-buttom">❤</button>
-          {/* <img src={URL} alt={name} /> */}
-        </div>
-      </Link>
       <div className="card___info-container">
         <span>
           <svg width="18px" height="18px" viewBox="0 0 16 16" version="1.1">
@@ -47,7 +76,7 @@ function Card({ name, image, temperaments, bred_for, weight, id }) {
           }
         </p>
         <ul className="card___temp-list">
-          {(temperaments === "unknow" )
+          {temperaments === "unknow"
             ? "No hay nada que mostrar"
             : temperaments?.map((temp) => (
                 <li className="card___span-temp" key={temp.name}>

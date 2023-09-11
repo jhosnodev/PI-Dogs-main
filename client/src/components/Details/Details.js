@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Details.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getDogByID } from "../../redux/actions";
 import { Link } from "react-router-dom";
+import { addFav, removeFav } from "../../redux/actions";
 
 function Details() {
   const { id } = useParams();
-
+  const myFavorites = useSelector((state) => state.favs);
+  console.log(myFavorites);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,6 +17,26 @@ function Details() {
   }, [dispatch, id]);
   const detail = useSelector((state) => state.detail);
   const dog = detail;
+
+  const [isFav, setIsFav] = useState(false);
+
+  const handleFavorite = () => {
+    console.log(isFav);
+    if (isFav) {
+      setIsFav(false);
+      dispatch(removeFav(dog.id));
+    } else {
+      setIsFav(true);
+      dispatch(addFav(dog));
+    }
+  };
+  useEffect(() => {
+    myFavorites?.forEach((fav) => {
+      if (fav.id === dog.id) {
+        setIsFav(true);
+      }
+    });
+  }, [myFavorites, dog.id]);
 
   return (
     <article className="details___main">
@@ -36,10 +58,19 @@ function Details() {
         <div className="details___dogs-img-gradient"></div>
       </div>
       <div className="details___dogs-info">
-        <Link className="btn___hightlight" to={`dog/edit/${dog?.id}`}>
+        {/*       <Link className="btn___hightlight" to={`dog/edit/${dog?.id}`}>
           Editar
-        </Link>
-        <button className="details___fav-buttom">❤</button>
+        </Link> */}
+        {isFav ? (
+          <button className="details___fav-buttom" onClick={handleFavorite}>
+            💗
+          </button>
+        ) : (
+          <button className="details___fav-buttom" onClick={handleFavorite}>
+            🤍
+          </button>
+        )}
+        {/*  <button className="details___fav-buttom">❤</button> */}
         <span className="details___id">ID: {dog?.id}</span>
         <h2>{dog?.name}</h2>
         <div className="details___tag">
@@ -83,12 +114,9 @@ function Details() {
           </ul>
         </div>
       </div>
-      <Link className="btn___comeback  " title="Volver" to='/home'>
+      <Link className="btn___comeback  " title="Volver" to="/home">
         <svg width="25px" height="25px" viewBox="0 0 2050 2050" fill="#f4f2f2">
-          <path
-
-            d="M1582.2,1488.7a44.9,44.9,0,0,1-36.4-18.5l-75.7-103.9A431.7,431.7,0,0,0,1121.4,1189h-60.1v64c0,59.8-33.5,112.9-87.5,138.6a152.1,152.1,0,0,1-162.7-19.4l-331.5-269a153.5,153.5,0,0,1,0-238.4l331.5-269a152.1,152.1,0,0,1,162.7-19.4c54,25.7,87.5,78.8,87.5,138.6v98.3l161,19.6a460.9,460.9,0,0,1,404.9,457.4v153.4a45,45,0,0,1-45,45Z"
-          />
+          <path d="M1582.2,1488.7a44.9,44.9,0,0,1-36.4-18.5l-75.7-103.9A431.7,431.7,0,0,0,1121.4,1189h-60.1v64c0,59.8-33.5,112.9-87.5,138.6a152.1,152.1,0,0,1-162.7-19.4l-331.5-269a153.5,153.5,0,0,1,0-238.4l331.5-269a152.1,152.1,0,0,1,162.7-19.4c54,25.7,87.5,78.8,87.5,138.6v98.3l161,19.6a460.9,460.9,0,0,1,404.9,457.4v153.4a45,45,0,0,1-45,45Z" />
         </svg>
       </Link>
     </article>

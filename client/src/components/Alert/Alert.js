@@ -10,7 +10,7 @@ function Alert({ type, msg }) {
   const info = useSelector((state) => state.alert);
   useEffect(() => {
     if (info) setIsVisible(!isVisible);
-  }, [info]);
+  }, [info, isVisible]);
   console.log(info);
   return (
     <div

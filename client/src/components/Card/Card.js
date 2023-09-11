@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 function Card({ name, image, temperaments, bred_for, weight, id }) {
   const myFavorites = useSelector((state) => state.favs);
-  console.log(myFavorites);
+
   const [isFav, setIsFav] = useState(false);
 
   const dispatch = useDispatch();
   const handleFavorite = () => {
-    console.log(isFav);
+   
     if (isFav) {
       setIsFav(false);
       dispatch(removeFav(id));

@@ -9,7 +9,7 @@ import { addFav, removeFav } from "../../redux/actions";
 function Details() {
   const { id } = useParams();
   const myFavorites = useSelector((state) => state.favs);
-  console.log(myFavorites);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function Details() {
   const [isFav, setIsFav] = useState(false);
 
   const handleFavorite = () => {
-    console.log(isFav);
+
     if (isFav) {
       setIsFav(false);
       dispatch(removeFav(dog.id));

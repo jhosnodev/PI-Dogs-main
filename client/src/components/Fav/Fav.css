@@ -1,24 +1,28 @@
 .fav___main {
+  padding-top: 6rem;
+  height: 150vh;
+  max-height: 300vh;
+  min-height: 120vh;
+  background: rgba(244, 242, 242, 1);
+  /* background: linear-gradient( 180deg, rgba(253, 90, 89, 1) 0%, rgba(244, 242, 242, 1) 30% ); */
+  display: flex;
+  flex-direction: column;
+}
+.fav___container-card {
   display: flex;
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
-
   margin-block: 0;
   margin: 0;
-  padding-top: 5rem;
+  gap: 2rem;
+  align-items: center;
+  padding-bottom: 3rem;
 }
 
 .fav___header-container {
- height: 100%;
-}
-.fav___container{
-      display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  /* grid-gap: 2rem; */
-  gap: 2rem;
-  margin-block: 0;
-
+  justify-self: start;
+  margin-bottom: 2rem;
+  align-self: flex-start;
+  padding-left: 6rem;
 }

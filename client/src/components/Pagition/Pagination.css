@@ -1,6 +1,6 @@
 .pagination___container {
   font-family: "Work Sans", sans-serif;
-  color:  #4f4846 !important;
+  color: #4f4846 !important;
   width: 100%;
 }
 .pagination {
@@ -14,29 +14,35 @@
   justify-content: center;
   align-content: center;
 }
+@media screen and (max-width: 470px) {
+  .pagination {
+    margin: 2rem;
+  }
+}
 
-.page-item:hover, .page-link:hover {
+.page-item:hover,
+.page-link:hover {
   transform: scale(1.005);
   font-weight: 700;
   color: #fd595985;
 }
-.page-item, .page-item .page-link {
+.page-item,
+.page-item .page-link {
   background: none;
   border: none;
-  transform: all ;
+  transform: all;
   cursor: pointer;
   transition: all 250ms;
-  color:  #4f4846 !important;
+  color: #4f4846 !important;
 }
 
 .active {
   color: #fd5a59;
   font-weight: 700;
 }
-.page-item-left{
+.page-item-left {
   margin-right: 1rem;
 }
-.page-item-right{
+.page-item-right {
   margin-left: 1rem;
-
 }

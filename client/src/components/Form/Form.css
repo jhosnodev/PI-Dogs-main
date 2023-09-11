@@ -31,9 +31,16 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-
+  
   padding: 2rem;
   margin-bottom: 4rem;
+}
+@media screen and (max-width:470px) {
+  .form___dogs-info {
+  width: 80%;
+
+  }
+  
 }
 .form___dogs-info:hover,
 .form___fav-buttom:hover {

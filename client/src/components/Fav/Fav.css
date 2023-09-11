@@ -1,8 +1,7 @@
 .fav___main {
   padding-top: 6rem;
-  height: 150vh;
-  max-height: 300vh;
-  min-height: 120vh;
+  min-height: 150vh;
+ 
   background: rgba(244, 242, 242, 1);
   /* background: linear-gradient( 180deg, rgba(253, 90, 89, 1) 0%, rgba(244, 242, 242, 1) 30% ); */
   display: flex;

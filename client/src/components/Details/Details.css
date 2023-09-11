@@ -23,7 +23,11 @@
   left: 0;
   top: 29rem;
 }
-
+@media screen and (max-width: 470px) {
+  .details___dogs-img-gradient {
+    display: none;
+  }
+}
 .details___dogs-info {
   background-color: #f4f2f2;
   width: 60%;
@@ -41,9 +45,17 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-  z-index: 333;
+  z-index: 33;
   padding: 4rem 2rem 2rem 2rem;
   margin-bottom: 4rem;
+}
+@media screen and (max-width: 470px) {
+  .details___dogs-info {
+
+    width: 80%;
+    height: 60%;
+    left: 10%;
+  }
 }
 .details___dogs-info:hover,
 .details___fav-buttom:hover {

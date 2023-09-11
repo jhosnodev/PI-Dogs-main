@@ -13,6 +13,11 @@
   touch-action: manipulation;
   vertical-align: baseline;
 }
+@media screen and (max-width: 470px) {
+  .card___container {
+    width: 80%;
+  }
+}
 .card___container:hover,
 .card___fav-buttom:hover {
   /*  background-color: #fd595985; */

@@ -136,6 +136,7 @@ code {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  z-index: 333;
   border: 1px solid transparent;
 }
 .btn___comeback:focus {

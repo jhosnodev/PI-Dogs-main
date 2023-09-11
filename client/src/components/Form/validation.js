@@ -1,6 +1,6 @@
 const validations = (inputs) => {
   const msg = [];
-  const regexNum = /[^0]+$/;
+
   /*   const regexNum = /^[1-9]\d*$/; */
   const regexName = /^[a-zA-Z\s]{3,}$/;
   /* const regexName = /^[a-zA-Z]+$/; */

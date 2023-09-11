@@ -43,12 +43,12 @@ hr {
   margin-right: 2rem;
   font-size: 1.3rem;
 }
-.hidden{
+.hidden {
   bottom: -20rem;
-  
 }
-.alert___close{
+.alert___close {
   margin-right: 0 !important;
   cursor: pointer;
   color: grey;
+  margin-left: 2rem;
 }

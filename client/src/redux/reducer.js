@@ -112,7 +112,16 @@ export const reducer = (state = initialState, action) => {
             : b.weight.split(" - ")[0] - a.weight.split(" - ")[0]
         ),
       };
-
+    case "SET_ALERT":
+      return {
+        ...state,
+        alert: action.payload,
+      };
+    case "CLEAR_ALERT":
+      return {
+        ...state,
+        alert: {},
+      };
     default:
       return { ...state };
   }

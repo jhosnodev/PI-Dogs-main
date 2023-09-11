@@ -20,6 +20,10 @@ function Form() {
     life_max: "",
   });
   const [error, setError] = useState([]);
+  const [alertMsg, setAlertMsg] = useState({
+    msg: "",
+    type: "",
+  });
   const [temps, setTemps] = useState([]);
 
   const dispatch = useDispatch();
@@ -37,7 +41,18 @@ function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (Object.values(error).length === 0 && temps.length > 0) {
+    if (
+      Object.values(error).length === 0 &&
+      temps.length > 0 &&
+      dogData.name.length > 3 &&
+      dogData.bred_for.length > 3 &&
+      Number(dogData.height_min) > 0 &&
+      Number(dogData.height_max) > 0 &&
+      Number(dogData.weight_min) > 0 &&
+      Number(dogData.weight_max) > 0 &&
+      Number(dogData.life_min) > 0 &&
+      Number(dogData.life_max) > 0
+    ) {
       const allValues = {
         name: dogData.name.trim(),
         bred_for: dogData.bred_for.trim(),
@@ -48,8 +63,16 @@ function Form() {
       };
 
       dispatch(setDog(allValues));
+      setAlertMsg({
+        msg: "¡Creado con éxito!",
+        type: "success",
+      });
     } else {
       console.log("tienes erorres");
+      setAlertMsg({
+        msg: "No se ha enviado por que tiene errores",
+        type: "error",
+      });
     }
   };
   const handleInputs = (e) => {
@@ -70,13 +93,14 @@ function Form() {
       life_max:
         e.target.name === "life_max" ? e.target.value : dogData.life_max,
     });
+    /*     console.log(dogData) */
     const messages = validations(dogData);
     setError(messages);
   };
 
   return (
     <div className="form___main">
-      <Alert type="success" msg="mensaje generico" />
+      {alertMsg.msg ? <Alert type={alertMsg.type} msg={alertMsg.msg} /> : ""}
       <Link className="btn___comeback  " title="Volver" to="/home">
         <svg width="25px" height="25px" viewBox="0 0 2050 2050" fill="#f4f2f2">
           <path d="M1582.2,1488.7a44.9,44.9,0,0,1-36.4-18.5l-75.7-103.9A431.7,431.7,0,0,0,1121.4,1189h-60.1v64c0,59.8-33.5,112.9-87.5,138.6a152.1,152.1,0,0,1-162.7-19.4l-331.5-269a153.5,153.5,0,0,1,0-238.4l331.5-269a152.1,152.1,0,0,1,162.7-19.4c54,25.7,87.5,78.8,87.5,138.6v98.3l161,19.6a460.9,460.9,0,0,1,404.9,457.4v153.4a45,45,0,0,1-45,45Z" />
@@ -90,7 +114,7 @@ function Form() {
             <input
               id="name"
               name="name"
-              onChange={handleInputs}
+              onChange={(e) => handleInputs(e)}
               placeholder="Nombre de la raza"
               value={dogData.name}
             />
@@ -101,7 +125,7 @@ function Form() {
             <input
               id="bred_for"
               name="bred_for"
-              onChange={handleInputs}
+              onChange={(e) => handleInputs(e)}
               placeholder="Especialidad de la raza"
               value={dogData.bred_for}
             />
@@ -114,7 +138,7 @@ function Form() {
                 id="height_min"
                 name="height_min"
                 placeholder="min"
-                onChange={handleInputs}
+                onChange={(e) => handleInputs(e)}
                 value={dogData.height_min}
                 className="input_range"
                 type="number"
@@ -127,7 +151,7 @@ function Form() {
                 id="height_max"
                 name="height_max"
                 placeholder="max"
-                onChange={handleInputs}
+                onChange={(e) => handleInputs(e)}
                 value={dogData.height_max}
                 className="input_range"
                 type="number"
@@ -142,7 +166,7 @@ function Form() {
                 id="weight_min"
                 name="weight_min"
                 placeholder="min"
-                onChange={handleInputs}
+                onChange={(e) => handleInputs(e)}
                 value={dogData.weight_min}
                 className="input_range"
                 type="number"
@@ -155,7 +179,7 @@ function Form() {
                 id="weight_max"
                 name="weight_max"
                 placeholder="max"
-                onChange={handleInputs}
+                onChange={(e) => handleInputs(e)}
                 value={dogData.weight_max}
                 className="input_range"
                 type="number"
@@ -170,7 +194,7 @@ function Form() {
                 id="life_min"
                 name="life_min"
                 placeholder="min"
-                onChange={handleInputs}
+                onChange={(e) => handleInputs(e)}
                 value={dogData.life_min}
                 className="input_range"
                 type="number"
@@ -183,7 +207,7 @@ function Form() {
                 id="life_max"
                 name="life_max"
                 placeholder="max"
-                onChange={handleInputs}
+                onChange={(e) => handleInputs(e)}
                 value={dogData.life_max}
                 className="input_range"
                 type="number"
@@ -205,7 +229,7 @@ function Form() {
           </fieldset>
 
           <button className={`btn___hightlight `}>
-            {id ? "Editar" : "Agregar"}
+            {id ? "Editar 🐕" : "Agregar 🐶"}
           </button>
         </form>
       </div>

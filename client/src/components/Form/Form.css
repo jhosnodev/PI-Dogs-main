@@ -31,16 +31,14 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-  
+
   padding: 2rem;
   margin-bottom: 4rem;
 }
-@media screen and (max-width:470px) {
+@media screen and (max-width: 470px) {
   .form___dogs-info {
-  width: 80%;
-
+    width: 80%;
   }
-  
 }
 .form___dogs-info:hover,
 .form___fav-buttom:hover {
@@ -116,4 +114,19 @@
 }
 .form___range .form___input-max-range {
   grid-area: 2 / 3 / 3 / 4;
+}
+
+.card___span-temp {
+  font-size: 0.6rem;
+  padding: calc(0.4rem - 1px) calc(1.2rem - 1px);
+  background: #D6A699;
+  color: #f4f2f2;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  height: fit-content;
+  display: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

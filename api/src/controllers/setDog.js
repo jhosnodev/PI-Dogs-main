@@ -5,7 +5,7 @@ const axios = require("axios");
 const setDog = async (req, res) => {
   const { name, bred_for, height, weight, life_span, temperament } = req.body;
 
-  /* console.log({ name, bred_for, height, weight, life_span, temperament }); */
+   console.log(temperament ); 
 
   if (name && height && weight && life_span && bred_for && temperament) {
     try {
@@ -24,7 +24,7 @@ const setDog = async (req, res) => {
     });
     temperament.map(async (temp) => {
       const findTemp = await Temperament.findAll({
-        where: { id: temp.value },
+        where: { name: temp },
       });
 
       createDog.addTemperament(findTemp);

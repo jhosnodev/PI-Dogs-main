@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperament, setDog } from "../../redux/actions";
 import validations from "./validation";
-import Select from "react-select";
+
 import Alert from "../Alert/Alert";
 import { Link } from "react-router-dom";
 
@@ -25,7 +25,8 @@ function Form() {
     type: "",
   });
   const [temps, setTemps] = useState([]);
-
+  const [mytemps, setMyTemps] = useState([]);
+  console.log(mytemps);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,7 +44,7 @@ function Form() {
     e.preventDefault();
     if (
       Object.values(error).length === 0 &&
-      temps.length > 0 &&
+      mytemps.length > 0 &&
       dogData.name.length > 3 &&
       dogData.bred_for.length > 3 &&
       Number(dogData.height_min) > 0 &&
@@ -59,9 +60,9 @@ function Form() {
         height: `${dogData.height_min} - ${dogData.height_max}`,
         weight: `${dogData.weight_min} - ${dogData.weight_max}`,
         life_span: `${dogData.life_min} - ${dogData.life_max}`,
-        temperament: temps,
+        temperament: mytemps,
       };
-
+      console.log('paso');
       dispatch(setDog(allValues));
       setAlertMsg({
         msg: "¡Creado con éxito!",
@@ -96,6 +97,15 @@ function Form() {
     /*     console.log(dogData) */
     const messages = validations(dogData);
     setError(messages);
+  };
+  const handleTemps = (e) => {
+    console.log(e.target.value);
+    mytemps.includes(e.target.value)
+      ? console.log("ya esta")
+      : setMyTemps([...mytemps, e.target.value]);
+  };
+  const handleDeleteTemps = (value) => {
+    setMyTemps(mytemps.filter((temp) => temp !== value));
   };
 
   return (
@@ -215,17 +225,27 @@ function Form() {
               <span className="form___error-msg">{error?.life_max}</span>
             </div>
           </fieldset>
+
           <fieldset>
             <label>Temperamentos:</label>
-            <Select
-              options={options}
-              isMulti
-              name="temps"
+            <select
               className="form___multi-select"
-              classNamePrefix="select"
-              onChange={(value) => setTemps(value)}
-            />
-            {/*  defaultValue={dogData.temps} */}
+              onChange={(e) => handleTemps(e)}
+            >
+              {options.map((op) => (
+                <option value={op.label} key={op.value}>
+                  {op.label}
+                </option>
+              ))}
+            </select>
+            <div>
+              Temperamentos seleccionados
+              {mytemps.map((tem) => (
+                <p key={tem} className="card___span-temp">
+                  {tem} <span onClick={() => handleDeleteTemps(tem)}>X</span>
+                </p>
+              ))}
+            </div>
           </fieldset>
 
           <button className={`btn___hightlight `}>

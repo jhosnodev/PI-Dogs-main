@@ -21,7 +21,6 @@ function Details() {
   const [isFav, setIsFav] = useState(false);
 
   const handleFavorite = () => {
-
     if (isFav) {
       setIsFav(false);
       dispatch(removeFav(dog.id));
@@ -58,9 +57,9 @@ function Details() {
         <div className="details___dogs-img-gradient"></div>
       </div>
       <div className="details___dogs-info">
-        {/*       <Link className="btn___hightlight" to={`dog/edit/${dog?.id}`}>
+        <Link className="btn___hightlight" to={`/dog/edit/${dog?.id}`}>
           Editar
-        </Link> */}
+        </Link>
         {isFav ? (
           <button className="details___fav-buttom" onClick={handleFavorite}>
             💗

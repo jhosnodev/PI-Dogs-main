@@ -33,7 +33,7 @@
   transform: all;
   cursor: pointer;
   transition: all 250ms;
-  color: #4f4846 ;
+  color: #4f4846;
 }
 
 .active {

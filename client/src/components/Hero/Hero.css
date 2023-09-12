@@ -24,6 +24,7 @@
     grid-template-rows: repeat(2, 50%);
     /*     grid-template-rows: 70% 30%; */
     grid-template-columns: 1fr;
+    row-gap: 3rem;
   } 
 }
 @media screen and (max-width: 470px) {
@@ -31,6 +32,7 @@
     grid-template-rows: repeat(2, 50%);
     /*     grid-template-rows: 70% 30%; */
     grid-template-columns: 1fr;
+    row-gap: 1rem;
   }
 }
 .hero___right-section-container {
@@ -73,7 +75,7 @@
 @media screen and (max-width: 720px) {
   .hero___container .btn___hightlight {
     margin-top: 1rem;
-    margin-bottom: 3rem;
+/*     margin-bottom: 3rem; */
   }
 }
 .hero___left-section-container {

@@ -13,6 +13,24 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
+@media screen and (max-width: 950px) {
+  .home___main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 720px) {
+  .home___main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
 @media screen and (max-width: 470px) {
   .home___main {
     display: flex;

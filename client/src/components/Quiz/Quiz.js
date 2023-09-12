@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./Quiz.css";
 import { quizData, temps } from "../../data/quiz";
+import { useDispatch } from "react-redux";
+import { filterTemps } from "../../redux/actions";
+import { Link } from "react-router-dom";
 
+//! quiz
 function Quiz({ quiz, setQuiz }) {
   const [hours, setHours] = useState("");
   const [kids, setKids] = useState("");
@@ -102,6 +106,7 @@ function Pagination({
   onPageChange,
   useHandlers,
 }) {
+  const dispatch = useDispatch();
   const pageNumbers = [];
 
   // Calcula el número total de páginas
@@ -208,8 +213,14 @@ function Pagination({
     } else {
       result.protective++;
     }
-    let max = 0
-    console.log(Object.entries(result).filter(temp => temp[1] > max ? temp : ''));
+
+    //filtrando resultados
+    const tempGroup = Object.entries(result).sort((a, b) => b[1] - a[1])[0];
+    const random = Math.floor(Math.random() * temps[tempGroup[0]].length);
+    const tempResult = temps[tempGroup[0]][random];
+    console.log(tempResult);
+
+    dispatch(filterTemps(tempResult));
   };
   return (
     <div className="quiz___wizard-handle">
@@ -224,19 +235,28 @@ function Pagination({
           {number}
         </button>
       ))}
-
-      <button
-        className="quiz___wizard-next btn___hightlight"
-        onClick={() =>
-          Object.values(useHandlers).includes("")
-            ? onPageChange(
-                currentPage !== totalPages ? currentPage + 1 : totalPages
-              )
-            : handleResults()
-        }
-      >
-        {Object.values(useHandlers).includes("") ? "Siguiente" : "Enviar"}
-      </button>
+      {Object.values(useHandlers).includes("") ? (
+        <button
+          className="quiz___wizard-next btn___hightlight"
+          onClick={() =>
+            Object.values(useHandlers).includes("")
+              ? onPageChange(
+                  currentPage !== totalPages ? currentPage + 1 : totalPages
+                )
+              : handleResults()
+          }
+        >
+          Siguiente
+        </button>
+      ) : (
+        <Link
+          className="quiz___wizard-next btn___hightlight"
+          onClick={handleResults}
+          to={'/home'}
+        >
+          Enviar
+        </Link>
+      )}
     </div>
   );
 }

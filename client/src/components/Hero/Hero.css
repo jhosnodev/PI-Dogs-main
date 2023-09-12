@@ -19,7 +19,15 @@
   overflow: hidden;
   padding-top: 5rem;
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 960px) {
+  .hero___container {
+    grid-template-rows: repeat(2, 50%);
+    /*     grid-template-rows: 70% 30%; */
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+  } 
+}
+@media screen and (max-width: 960px) {
   .hero___container {
     grid-template-rows: repeat(2, 50%);
     /*     grid-template-rows: 70% 30%; */
@@ -38,7 +46,7 @@
 .hero___right-section-container {
   padding-left: 3rem;
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 960px) {
   .hero___right-section-container {
     padding-left: 0rem;
   }
@@ -54,7 +62,7 @@
   line-height: 13rem;
   margin: 0;
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 960px) {
   .hero___right-section-container h1 {
     font-size: 8rem;
     line-height: 9rem;
@@ -72,7 +80,7 @@
 .hero___container .btn___hightlight {
   margin-top: 3rem;
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 960px) {
   .hero___container .btn___hightlight {
     margin-top: 1rem;
 /*     margin-bottom: 3rem; */
@@ -90,7 +98,7 @@
 .hero___left-section-container img {
   height: 40rem;
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 960px) {
   .hero___left-section-container img {
     height: 22rem;
   }
@@ -99,4 +107,7 @@
   .hero___left-section-container img {
     height: 22rem;
   }
+}
+.hero___right-section-container p{
+  padding: 0 2rem;
 }

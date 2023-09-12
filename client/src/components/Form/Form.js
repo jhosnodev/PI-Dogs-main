@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Form.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getTemperament, setDog } from "../../redux/actions";
+import { getTemperament, setDog, getDogs } from "../../redux/actions";
 import validations from "./validation";
 
 import Alert from "../Alert/Alert";
@@ -64,6 +64,7 @@ function Form() {
       };
       console.log("paso");
       dispatch(setDog(allValues));
+      dispatch(getDogs());
       setAlertMsg({
         msg: "¡Creado con éxito!",
         type: "success",

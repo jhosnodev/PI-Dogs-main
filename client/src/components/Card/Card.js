@@ -11,7 +11,6 @@ function Card({ name, image, temperaments, bred_for, weight, id }) {
 
   const dispatch = useDispatch();
   const handleFavorite = () => {
-   
     if (isFav) {
       setIsFav(false);
       dispatch(removeFav(id));
@@ -64,10 +63,12 @@ function Card({ name, image, temperaments, bred_for, weight, id }) {
           {weight}
         </span>
         <Link to={`dog/${id}`}>
-          <h2>{name}</h2>
+          <h2 style={{ fontSize: name.length > 16 ? "1rem" : "1.3rem" }}>
+            {name}
+          </h2>
         </Link>
         <p>
-          {bred_for?.slice(0, 50)}
+          {bred_for ? bred_for?.slice(0, 20): 'No tenemos info'}
           {"... "}
           {
             <Link className="card___see-more" to={`dog/${id}`}>

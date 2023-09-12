@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { getAllData } = require("./getAllDogs");
+const { getAllData } = require("../controllers/getAllDogs");
 
 //** Buscar por ID de raza */
 const getDogId = async (req, res) => {
@@ -11,6 +11,7 @@ const getDogId = async (req, res) => {
     res.status(200).json(result);
   } catch (error) {
     console.error(`Download error: ${error.message}`);
+    res.status(404).send(error.message);
   }
 };
 

@@ -21,6 +21,7 @@ const setTemperaments = async (req, res) => {
     res.status(200).json(setTemps);
   } catch (error) {
     console.error(`Download error: ${error.message}`);
+    return { error: error };
   }
 };
 

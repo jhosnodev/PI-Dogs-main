@@ -6,28 +6,6 @@ const { Dog, Temperament } = require("../db");
 //*Buscar todos los perros y devolver un arreglo
 /// esta funcion limpia la data de la api y alimenta el resto de las funciones que devuelven respuestas a las rutas de consulta
 
-const getAllData = async () => {
-  /*   const name = req.query.name; */
-  const resultApi = await allDogsApi();
-  const result = await allDogs();
-  return result.concat(resultApi);
-};
-
-const getAllDogs = async (req, res) => {
-  const name = req.query.name;
-  const allMyDogs = await getAllData();
-
-  if (name) {
-    let resultName = Object.values(allMyDogs).filter((dog) =>
-      dog["name"]?.toLowerCase().includes(name.toLowerCase())
-    );
-
-    res.status(200).send(resultName);
-  } else {
-    res.status(200).send(allMyDogs);
-  }
-};
-
 const allDogsApi = async () => {
   try {
     const { data } = await axios(BASE_URL);
@@ -68,6 +46,15 @@ const allDogs = async () => {
     return allDogsDb;
   } catch (error) {
     console.error(`Download error: ${error.message}`);
+    return { error: error };
   }
 };
-module.exports = { getAllDogs, getAllData };
+
+const getAllData = async () => {
+  /*   const name = req.query.name; */
+  const resultApi = await allDogsApi();
+  const result = await allDogs();
+
+  return result.concat(resultApi);
+};
+module.exports = getAllData;

@@ -5,7 +5,7 @@ const axios = require("axios");
 const setDog = async (req, res) => {
   const { name, bred_for, height, weight, life_span, temperament } = req.body;
 
-   console.log(temperament ); 
+  console.log(temperament);
 
   if (name && height && weight && life_span && bred_for && temperament) {
     try {

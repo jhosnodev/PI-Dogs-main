@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import "./Fav.css";
 import "../List/List.css";
 import Card from "../Card/Card";
@@ -10,13 +10,13 @@ import Pagination from "../Pagition/Pagination";
 function Fav() {
   const favs = useSelector((state) => state.favs);
 
-  const searchResult = useSelector((state) => state.search);
+  /*   const searchResult = useSelector((state) => state.search); */
 
   const [currentPage, setCurrentPage] = useState(1);
   const [dogsPerPage] = useState(8);
 
   //dogs to Fav
-  const dogs = searchResult.length ? searchResult : favs;
+  /*   const dogs = searchResult.length ? searchResult : favs; */
 
   //pagination settings
   const indexOfLastDog = currentPage * dogsPerPage;
@@ -48,7 +48,7 @@ function Fav() {
       ) : (
         <Pagination
           dogsPerPage={dogsPerPage}
-          totalItems={dogs.length}
+          totalItems={favs.length}
           currentPage={currentPage}
           onPageChange={setCurrentPage}
         />

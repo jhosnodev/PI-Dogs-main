@@ -14,7 +14,9 @@ import validations from "./validation";
 import Alert from "../Alert/Alert";
 import { Link } from "react-router-dom";
 
+//Empieza el componente
 function Form() {
+  //useEffect
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -23,39 +25,69 @@ function Form() {
     dispatch(getDogByID(id));
   }, [dispatch, id]);
 
+  //definicion de variables
+
   const detail = useSelector((state) => state.detail);
-  console.log(detail);
-  const [dogData, setDogData] = useState({
-    name: id ? detail.name : "",
-    bred_for: id ? detail.bred_for : "",
-    height_min: id ? detail.height.split(" - ")[0] : "",
-    height_max: id ? detail.height.split(" - ")[1] : "",
-    weight_min: id ? detail.weight.split(" - ")[0] : "",
-    weight_max: id ? detail.weight.split(" - ")[1] : "",
-    life_min:
-      id && detail.life_span.split(" - ")[0]
-        ? detail.life_span.split(" - ")[0]
-        : "",
-    life_max:
-      id && detail.life_span.split(" - ")[1]
-        ? detail.life_span?.split(" - ")[1].split(" years")[0]
-        : "",
+  const allTemps = useSelector((state) => state.temps);
+  const alert = useSelector((state) => state.alert);
+  console.log(alert);
+  const options = allTemps.map((temp) => {
+    return { value: temp.id, label: temp.name };
   });
+
+  ///estados
   const [error, setError] = useState([]);
   const [alertMsg, setAlertMsg] = useState({
     msg: "",
     type: "",
   });
 
-  const [mytemps, setMyTemps] = useState(
-    id ? detail.temperaments.map((temp) => temp.name) : []
-  );
-
-  const allTemps = useSelector((state) => state.temps);
-  const options = allTemps.map((temp) => {
-    return { value: temp.id, label: temp.name };
+  const [dogData, setDogData] = useState({
+    name: id ? detail?.name : "",
+    bred_for: id ? detail?.bred_for : "",
+    height_min:
+      id && detail
+        ? detail.height.includes(" - ")
+          ? detail?.height.split(" - ")[0]
+          : detail.height
+        : "",
+    height_max:
+      id && detail
+        ? detail.height.includes(" - ")
+          ? detail?.height.split(" - ")[1]
+          : ""
+        : "",
+    weight_min:
+      id && detail
+        ? detail.weight.includes(" - ")
+          ? detail?.weight.split(" - ")[0]
+          : ""
+        : "",
+    weight_max:
+      id && detail
+        ? detail.weight.includes(" - ")
+          ? detail?.weight.split(" - ")[1]
+          : ""
+        : "",
+    life_min:
+      id && detail
+        ? detail.life_span.includes(" years")
+          ? detail.life_span.split(" ")[0]
+          : ""
+        : "",
+    life_max:
+      id && detail
+        ? detail?.life_span.includes(" - ")
+          ? detail.life_span?.split(" ")[2]
+          : ""
+        : "",
   });
 
+  const [mytemps, setMyTemps] = useState(
+    id && detail ? detail.temperaments.map((temp) => temp.name) : []
+  );
+
+  // manejadores
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -80,18 +112,21 @@ function Form() {
       };
 
       if (id && detail.id) {
-        console.log({ id: detail.id, ...allValues });
+        /*         console.log({ id: detail.id, imagen: detail.imagen, ...allValues }); */
         /*         dispatch(updateDog({id: detail.id, ...allValues})); */
+        setAlertMsg({
+          msg: `¡${dogData.name} actualizado con éxito!`,
+          type: "success",
+        });
       } else {
-        dispatch(setDog(allValues));
+            dispatch(setDog(allValues));
+        setAlertMsg({
+          msg: `¡${dogData.name} creado con éxito!`,
+          type: "success",
+        });
       }
       dispatch(getDogs());
-      setAlertMsg({
-        msg: "¡Creado con éxito!",
-        type: "success",
-      });
     } else {
-      console.log("tienes erorres");
       setAlertMsg({
         msg: "No se ha enviado por que tiene errores",
         type: "error",
@@ -116,7 +151,7 @@ function Form() {
       life_max:
         e.target.name === "life_max" ? e.target.value : dogData.life_max,
     });
-    /*     console.log(dogData) */
+
     const messages = validations(dogData);
     setError(messages);
   };
@@ -131,7 +166,7 @@ function Form() {
 
   return (
     <div className="form___main">
-      {/*       {alertMsg.msg ? <Alert type={alertMsg.type} msg={alertMsg.msg} /> : ""} */}
+      {alertMsg.msg ? <Alert type={alertMsg.type} msg={alertMsg.msg} /> : ""}
       <Link className="btn___comeback  " title="Volver" to="/home">
         <svg width="25px" height="25px" viewBox="0 0 2050 2050" fill="#f4f2f2">
           <path d="M1582.2,1488.7a44.9,44.9,0,0,1-36.4-18.5l-75.7-103.9A431.7,431.7,0,0,0,1121.4,1189h-60.1v64c0,59.8-33.5,112.9-87.5,138.6a152.1,152.1,0,0,1-162.7-19.4l-331.5-269a153.5,153.5,0,0,1,0-238.4l331.5-269a152.1,152.1,0,0,1,162.7-19.4c54,25.7,87.5,78.8,87.5,138.6v98.3l161,19.6a460.9,460.9,0,0,1,404.9,457.4v153.4a45,45,0,0,1-45,45Z" />
@@ -187,7 +222,7 @@ function Form() {
                 className="input_range"
                 type="number"
               />
-              <span className="login___form-error">{error?.height_max}</span>
+              <span className="form___form-msg">{error?.height_max}</span>
             </div>
           </fieldset>
           <fieldset className="form___range">
@@ -202,7 +237,7 @@ function Form() {
                 className="input_range"
                 type="number"
               />
-              <span className="login___form-error">{error?.weight_min}</span>
+              <span className="form___form-msg">{error?.weight_min}</span>
             </div>
             <p>{" - "}</p>
             <div className="form___input-max-range">
@@ -271,7 +306,11 @@ function Form() {
             </div>
           </fieldset>
 
-          <button className={`btn___hightlight `}>
+          <button
+            className={`btn___hightlight  ${
+              error.length > 0 ? "disabled" : ""
+            }`}
+          >
             {id ? "Editar 🐕" : "Agregar 🐶"}
           </button>
         </form>

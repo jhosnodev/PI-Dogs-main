@@ -155,3 +155,7 @@
   text-align: left;
   margin-top: 1rem;
 }
+.disabled{
+  background-color:rgb(220 220 220 / 60%);
+  cursor: auto;
+}

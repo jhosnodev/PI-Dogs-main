@@ -3,9 +3,8 @@ const initialState = {
   dogs: [],
   favs: [],
   temps: [],
-  search: [],
+  tempName: "",
   detail: {},
-  filter: {},
   alert: {},
 };
 
@@ -14,7 +13,6 @@ export const reducer = (state = initialState, action) => {
     case "GET_DOGS":
       return {
         ...state,
-        dogs: action.payload,
         allDogs: action.payload,
       };
     case "GET_DOG_BY_NAME":
@@ -52,11 +50,15 @@ export const reducer = (state = initialState, action) => {
         ...state,
         alert: action.payload,
       };
+
+    //!Update dogs
     case "UPDATE_DOG":
       return {
         ...state,
         temps: action.payload,
       };
+
+    //!Update dogs
     case "DELETE_DOG":
       return {
         ...state,
@@ -73,7 +75,7 @@ export const reducer = (state = initialState, action) => {
         dogs:
           action.payload === "all"
             ? state.allDogs
-            : Object.values(state.dogs).filter((dog) =>
+            : Object.values(state.allDogs).filter((dog) =>
                 Object.values(dog["temperaments"])
                   .map((temp) => temp.name)
                   .includes(action.payload)
@@ -94,6 +96,7 @@ export const reducer = (state = initialState, action) => {
     case "ORDER_ALPHA":
       return {
         ...state,
+        tempName: action.payload,
         dogs:
           action.payload === "as"
             ? Object.values(state.dogs).sort((a, b) =>

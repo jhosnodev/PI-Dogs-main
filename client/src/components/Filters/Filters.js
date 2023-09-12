@@ -9,7 +9,7 @@ import {
   filterSource,
 } from "../../redux/actions";
 
-function Filters() {
+function Filters({ clear, setClear, order, setOrder }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,19 +17,28 @@ function Filters() {
   }, [dispatch]);
 
   const allTemps = useSelector((state) => state.temps);
+
   const handleSortWeight = (order) => {
     dispatch(orderNumber(order));
+    setOrder(`Ordenador por PESO de manera ${order === 'as' ? 'ASCENDENTE' : 'DESCENDETNE' }`)
+    setClear(!clear);
   };
-
+  
   const handleSortBreed = (order) => {
     dispatch(orderAlpha(order));
+    setOrder(`Ordenador por RAZA de manera ${order === 'as' ? 'ASCENDENTE' : 'DESCENDETNE' }`)
+    setClear(!clear);
   };
-
+  
   const handleTempFilter = (e) => {
     dispatch(filterTemps(e.target.value));
+    setOrder(`Filtrado por el TEMEPRAMENTO: ${e.target.value}`)
+    setClear(!clear);
   };
   const handleSourceFilter = (source) => {
     dispatch(filterSource(source));
+    setClear(!clear);
+    setOrder(`${source === 'DB' ? 'Tus perritos guardados' : 'Perritus de la API' }`)
   };
 
   return (

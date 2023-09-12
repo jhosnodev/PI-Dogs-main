@@ -132,5 +132,194 @@ const protective = [
   "Unflappable",
   "Spunky",
 ];
-const temps = [active, calm, clever, beloved, protective]
-export {temps};
+const quizData = [
+  {
+    question: "¿Cuánto tiempo pasas fuera de casa en un día promedio?",
+    name: "hours",
+    options: [
+      {
+        value: "3h",
+        icon: "🕒",
+        label: "3 horas",
+      },
+      {
+        value: "6h",
+        icon: "🕕",
+        label: "6 horas",
+      },
+      {
+        value: "8h",
+        icon: "🕗",
+        label: "8 horas",
+      },
+      {
+        value: "+8h",
+        icon: "🕙",
+        label: "+8 horas",
+      },
+    ],
+  },
+  {
+    question: "¿Tienes niños pequeños en casa?",
+    name: "kids",
+    options: [
+      {
+        value: "no",
+        icon: "❌",
+        label: "No",
+      },
+      {
+        value: "yes",
+        icon: "✅",
+        label: "Si",
+      },
+    ],
+  },
+  {
+    question: "¿Tienes otras mascotas en casa?",
+    name: "pets",
+    options: [
+      {
+        value: "no",
+        icon: "❌",
+        label: "No",
+      },
+      {
+        value: "other",
+        icon: "🐢",
+        label: "otro",
+      },
+      {
+        value: "cat",
+        icon: "🐱",
+        label: "Gato",
+      },
+    ],
+  },
+  {
+    question: "¿Tienes un jardín grande o vive en un apartamento?",
+    name: "home",
+    options: [
+      {
+        value: "edif",
+        icon: "🏢",
+        label: "Edif",
+      },
+      {
+        value: "house",
+        icon: "🏠",
+        label: "Casa",
+      },
+    ],
+  },
+  {
+    question: "¿Eres activo y te gusta hacer ejercicio?",
+    name: "active",
+    options: [
+      {
+        value: "no",
+        icon: "😴",
+        label: "No",
+      },
+      {
+        value: "regular",
+        icon: "😬",
+        label: "Algo",
+      },
+      {
+        value: "yes",
+        icon: "😎",
+        label: "Si",
+      },
+    ],
+  },
+  {
+    question: "¿Tienes experiencia con perros?",
+    name: "exp",
+    options: [
+      {
+        value: "no",
+        icon: "❌",
+        label: "No",
+      },
+      {
+        value: "regular",
+        icon: "😳",
+        label: "algo",
+      },
+      {
+        value: "yes",
+        icon: "✅",
+        label: "Si",
+      },
+    ],
+  },
+  {
+    question:
+      "¿Tienes un presupuesto para la atención veterinaria y la comida para perros?",
+    name: "resource",
+    options: [
+      {
+        value: "no",
+        icon: "❌",
+        label: "No",
+      },
+      {
+        value: "yes",
+        icon: "✅",
+        label: "Si",
+      },
+    ],
+  },
+  {
+    question: "¿Eres paciente y cariñoso?",
+    name: "love",
+    options: [
+      {
+        value: "no",
+        icon: "❌",
+        label: "No",
+      },
+      {
+        value: "yes",
+        icon: "💚",
+        label: "Si",
+      },
+    ],
+  },
+  {
+    question: "¿Estás dispuesto a entrenar a tu perro?",
+    name: "training",
+    options: [
+      {
+        value: "no",
+        icon: "❌",
+        label: "No",
+      },
+      {
+        value: "yes",
+        icon: "🤓",
+        label: "Si",
+      },
+    ],
+  },
+  {
+    question:
+      "¿Estás dispuesto a socializar a tu perro con otras personas y animales?",
+    name: "social",
+    options: [
+      {
+        value: "no",
+        icon: "❌",
+        label: "No",
+      },
+      {
+        value: "yes",
+        icon: "✅",
+        label: "Si",
+      },
+    ],
+  },
+];
+const temps = [active, calm, clever, beloved, protective];
+export { temps, quizData };

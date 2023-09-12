@@ -20,12 +20,12 @@ export const reducer = (state = initialState, action) => {
     case "GET_DOG_BY_NAME":
       return {
         ...state,
-        search: action.payload,
+        dogs: action.payload,
       };
     case "CLEAR_GET_DOG_BY_NAME":
       return {
         ...state,
-        search: action.payload,
+        dogs: action.payload,
       };
     case "GET_DOG_BY_ID":
       return {
@@ -65,7 +65,7 @@ export const reducer = (state = initialState, action) => {
     case "RESET_SEARCH":
       return {
         ...state,
-        search: [],
+        dogs: state.allDogs,
       };
     case "FILTER_TEMP":
       return {
@@ -73,7 +73,7 @@ export const reducer = (state = initialState, action) => {
         dogs:
           action.payload === "all"
             ? state.allDogs
-            : Object.values(state.allDogs).filter((dog) =>
+            : Object.values(state.dogs).filter((dog) =>
                 Object.values(dog["temperaments"])
                   .map((temp) => temp.name)
                   .includes(action.payload)
@@ -84,10 +84,10 @@ export const reducer = (state = initialState, action) => {
         ...state,
         dogs:
           action.payload === "cloud"
-            ? Object.values(state.allDogs).filter(
+            ? Object.values(state.dogs).filter(
                 (dog) => typeof dog.id === "number"
               )
-            : Object.values(state.allDogs).filter(
+            : Object.values(state.dogs).filter(
                 (dog) => typeof dog.id === "string"
               ),
       };
@@ -96,17 +96,17 @@ export const reducer = (state = initialState, action) => {
         ...state,
         dogs:
           action.payload === "as"
-            ? Object.values(state.allDogs).sort((a, b) =>
+            ? Object.values(state.dogs).sort((a, b) =>
                 a.name.localeCompare(b.name)
               )
-            : Object.values(state.allDogs)
+            : Object.values(state.dogs)
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .reverse(),
       };
     case "ORDER_NUMBER":
       return {
         ...state,
-        dogs: Object.values(state.allDogs).sort((a, b) =>
+        dogs: Object.values(state.dogs).sort((a, b) =>
           action.payload === "as"
             ? a.weight.split(" - ")[0] - b.weight.split(" - ")[0]
             : b.weight.split(" - ")[0] - a.weight.split(" - ")[0]

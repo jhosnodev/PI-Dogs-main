@@ -18,7 +18,7 @@ function Hero() {
   };
   return (
     <section className="hero___container">
-      {quiz ? <Quiz quiz={quiz}  setQuiz={setQuiz}/> : ""}
+      {quiz ? <Quiz quiz={quiz} setQuiz={setQuiz} /> : ""}
       <div className="hero___right-section-container">
         <h1>dogs!</h1>
         <p>{hero[random]}</p>

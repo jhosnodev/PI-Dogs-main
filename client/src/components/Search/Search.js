@@ -2,7 +2,7 @@ import "./Search.css";
 import { useDispatch } from "react-redux";
 import { getDogByName } from "../../redux/actions";
 
-function Search({ search, setSearch }) {
+function Search({ search, setSearch, clear,  setClear }) {
   const dispatch = useDispatch();
 
   const handleSearch = (e) => {
@@ -11,6 +11,7 @@ function Search({ search, setSearch }) {
 
   const handleSendName = () => {
     dispatch(getDogByName(search));
+    setClear(!clear)
   };
 
   return (

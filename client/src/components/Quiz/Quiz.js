@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Quiz.css";
+import { quizData, temps } from "../../data/quiz";
 
 function Quiz({ quiz, setQuiz }) {
   const [hours, setHours] = useState("");
@@ -12,419 +13,230 @@ function Quiz({ quiz, setQuiz }) {
   const [love, setLove] = useState("");
   const [training, setTraining] = useState("");
   const [social, setSocial] = useState("");
+  const useHandlers = {
+    hours: hours,
+    kids: kids,
+    pets: pets,
+    home: home,
+    active: active,
+    exp: exp,
+    resource: resource,
+    love: love,
+    training: training,
+    social: social,
+  };
+  const useSetHandlers = {
+    hours: setHours,
+    kids: setKids,
+    pets: setPets,
+    home: setHome,
+    active: setActive,
+    exp: setExp,
+    resource: setResource,
+    love: setLove,
+    training: setTraining,
+    social: setSocial,
+  };
+
+  //pagination settings
+  const [currentPage, setCurrentPage] = useState(1);
+  const [questionPerPage] = useState(2);
+  const indexOfLastQuestion = currentPage * questionPerPage;
+  const indexOfFirstQuestion = indexOfLastQuestion - questionPerPage;
+  const currentQuiz = quizData.slice(indexOfFirstQuestion, indexOfLastQuestion);
 
   return (
     /* onClick={()=> setQuiz(!quiz)} */
     <div className="quiz___main">
+      <div className="quiz___background" onClick={() => setQuiz(!quiz)}></div>
       <div className="quiz___cointainer">
-        <h3>Descubre que perrito seria tu compañere ideal</h3>
+        <h3>Descubre que perrito seria tu compañero ideal</h3>
         <form className="quiz___form">
-          <div className="page page-1">
-            <fieldset>
-              <label>
-                ¿Cuánto tiempo pasas fuera de casa en un día promedio?
-              </label>
-              {/* 3 horas 6 horas 8 horas 8+ horas */}
-              <div className="quiz___radio-tile-container">
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="hours"
-                    value="3h"
-                    className="quiz___radio-btn"
-                    checked={hours === "3h"}
-                    onChange={(event) => setHours(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">🕒</div>
-                    <label className="quiz___radio-label">3 horas</label>
-                  </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="hours"
-                    value="6h"
-                    className="quiz___radio-btn"
-                    checked={hours === "6h"}
-                    onChange={(event) => setHours(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">🕕</div>
-                    <label className="quiz___radio-label">6 horas</label>
-                  </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="hours"
-                    value="8h"
-                    className="quiz___radio-btn"
-                    checked={hours === "8h"}
-                    onChange={(event) => setHours(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">🕗</div>
-                    <label className="quiz___radio-label">8 horas</label>
-                  </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="hours"
-                    value="+8h"
-                    className="quiz___radio-btn"
-                    checked={hours === "+8h"}
-                    onChange={(event) => setHours(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">🕙</div>
-                    <label className="quiz___radio-label">+8 Horas</label>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-            <fieldset>
-              <label>¿Tienes niños pequeños en casa?</label>
-              <div className="quiz___radio-tile-container">
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="kids"
-                    value="yes"
-                    className="quiz___radio-btn"
-                    checked={kids === "yes"}
-                    onChange={(event) => setKids(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">✅</div>
-                    <label className="quiz___radio-label">Si</label>
-                  </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="kids"
-                    value="no"
-                    className="quiz___radio-btn"
-                    checked={kids === "no"}
-                    onChange={(event) => setKids(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">❌</div>
-                    <label className="quiz___radio-label">No</label>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-          </div>
+          {currentQuiz.map((q, index) => (
+            <fieldset key={index}>
+              <label>{q.question}</label>
 
-          <div className="page page-2">
-            <fieldset>
-              <label>¿Tienes otras mascotas en casa?</label>
               <div className="quiz___radio-tile-container">
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="pets"
-                    value="si"
-                    className="quiz___radio-btn"
-                    checked={pets === "yes"}
-                    onChange={(event) => setPets(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">✅</div>
-                    <label className="quiz___radio-label">Si</label>
+                {q.options.map((op) => (
+                  <div className="quiz___radio-container" key={op.value}>
+                    <input
+                      type="radio"
+                      name={q.name}
+                      value={op.value}
+                      className="quiz___radio-btn"
+                      checked={useHandlers[q.name] === op.value}
+                      onChange={(event) =>
+                        useSetHandlers[q.name](event.target.value)
+                      }
+                    />
+                    <div className="quiz___radio_tile">
+                      <div className="quiz___radio-icon">{op.icon}</div>
+                      <label className="quiz___radio-label">{op.label}</label>
+                    </div>
                   </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="pets"
-                    value="no"
-                    className="quiz___radio-btn"
-                    checked={pets === "no"}
-                    onChange={(event) => setPets(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">❌</div>
-                    <label className="quiz___radio-label">No</label>
-                  </div>
-                </div>
+                ))}
               </div>
             </fieldset>
-            <fieldset>
-              <label>¿Tienes un jardín grande o vive en un apartamento?</label>
-              <div className="quiz___radio-tile-container">
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="home"
-                    value="edif"
-                    className="quiz___radio-btn"
-                    checked={home === "edif"}
-                    onChange={(event) => setHome(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">🏢</div>
-                    <label className="quiz___radio-label">Edif</label>
-                  </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="home"
-                    value="house"
-                    className="quiz___radio-btn"
-                    checked={home === "house"}
-                    onChange={(event) => setHome(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">🏠</div>
-                    <label className="quiz___radio-label">Casa</label>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-          <div className="page page-3">
-            <fieldset>
-              <label>¿Eres activo y te gusta hacer ejercicio?</label>
-              <div className="quiz___radio-tile-container">
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="active"
-                    value="yes"
-                    className="quiz___radio-btn"
-                    checked={active === "si"}
-                    onChange={(event) => setActive(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">😎</div>
-                    <label className="quiz___radio-label">Si</label>
-                  </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="active"
-                    value="regular"
-                    className="quiz___radio-btn"
-                    checked={active === "regular"}
-                    onChange={(event) => setActive(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">😬</div>
-                    <label className="quiz___radio-label">Algo</label>
-                  </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="active"
-                    value="no"
-                    className="quiz___radio-btn"
-                    checked={active === "no"}
-                    onChange={(event) => setActive(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">😴</div>
-                    <label className="quiz___radio-label">No</label>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-            <fieldset>
-              <label>¿Tienes experiencia con perros?</label>
-              <div className="quiz___radio-tile-container">
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="exp"
-                    value="si"
-                    className="quiz___radio-btn"
-                    checked={exp === "si"}
-                    onChange={(event) => setExp(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">✅</div>
-                    <label className="quiz___radio-label">Si</label>
-                  </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="exp"
-                    value="no"
-                    className="quiz___radio-btn"
-                    checked={exp === "no"}
-                    onChange={(event) => setExp(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">❌</div>
-                    <label className="quiz___radio-label">No</label>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-          <div className="page page-4">
-            <fieldset>
-              <label>
-                ¿Tienes un presupuesto para la atención veterinaria y la comida
-                para perros?
-              </label>
-              <div className="quiz___radio-tile-container">
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="resource"
-                    value="si"
-                    className="quiz___radio-btn"
-                    checked={resource === "si"}
-                    onChange={(event) => setResource(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">✅</div>
-                    <label className="quiz___radio-label">Si</label>
-                  </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="resource"
-                    value="no"
-                    className="quiz___radio-btn"
-                    checked={resource === "no"}
-                    onChange={(event) => setResource(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">❌</div>
-                    <label className="quiz___radio-label">No</label>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-            <fieldset>
-              <label>¿Eres paciente y cariñoso?</label>
-              <div className="quiz___radio-tile-container">
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="love"
-                    value="si"
-                    className="quiz___radio-btn"
-                    checked={love === "si"}
-                    onChange={(event) => setLove(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">✅</div>
-                    <label className="quiz___radio-label">Si</label>
-                  </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="love"
-                    value="no"
-                    className="quiz___radio-btn"
-                    checked={love === "no"}
-                    onChange={(event) => setLove(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">❌</div>
-                    <label className="quiz___radio-label">No</label>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-          <div className="page page-5">
-            <fieldset>
-              <label>¿Estás dispuesto a entrenar a tu perro?</label>
-              <div className="quiz___radio-tile-container">
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="training"
-                    value="si"
-                    className="quiz___radio-btn"
-                    checked={training === "si"}
-                    onChange={(event) => setTraining(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">✅</div>
-                    <label className="quiz___radio-label">Si</label>
-                  </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="training"
-                    value="no"
-                    className="quiz___radio-btn"
-                    checked={training === "si"}
-                    onChange={(event) => setTraining(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">❌</div>
-                    <label className="quiz___radio-label">No</label>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-            <fieldset>
-              <label>
-                ¿Estás dispuesto a socializar a tu perro con otras personas y
-                animales?
-              </label>
-              <div className="quiz___radio-tile-container">
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="social"
-                    value="si"
-                    className="quiz___radio-btn"
-                    checked={social === "si"}
-                    onChange={(event) => setSocial(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">✅</div>
-                    <label className="quiz___radio-label">Si</label>
-                  </div>
-                </div>
-                <div className="quiz___radio-container">
-                  <input
-                    type="radio"
-                    name="social"
-                    value="no"
-                    className="quiz___radio-btn"
-                    checked={social === "no"}
-                    onChange={(event) => setSocial(event.target.value)}
-                  />
-                  <div className="quiz___radio_tile">
-                    <div className="quiz___radio-icon">❌</div>
-                    <label className="quiz___radio-label">No</label>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-          </div>
+          ))}
         </form>
-        <div className="quiz___wizard-handle">
-          <button className="quiz___wizard-btn">1</button>
-          <button className="quiz___wizard-btn">2</button>
-          <button className="quiz___wizard-btn">3</button>
-          <button className="quiz___wizard-btn">4</button>
-          <button className="quiz___wizard-btn">5</button>
-          <button className="quiz___wizard-next btn___hightlight">
-            Siguiente
-          </button>
-        </div>
+        {/* 
+        { questionPerPage;  totalItems=quizData.length; currentPage; onPageChange=setCurrentPage } */}
+        <Pagination
+          questionPerPage={questionPerPage}
+          totalItems={quizData.length}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+          useHandlers={useHandlers}
+        />
       </div>
     </div>
   );
 }
 
 export default Quiz;
+
+function Pagination({
+  questionPerPage,
+  totalItems,
+  currentPage,
+  onPageChange,
+  useHandlers,
+}) {
+  const pageNumbers = [];
+
+  // Calcula el número total de páginas
+  const totalPages = Math.ceil(totalItems / questionPerPage);
+
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i);
+  }
+  const handleResults = () => {
+    const result = { active: 0, calm: 0, clever: 0, beloved: 0, protective: 0 };
+    //!Hours
+    switch (useHandlers.hours) {
+      case "3h":
+        result.active++;
+        break;
+      case "6h":
+        result.protective++;
+        break;
+      case "8h":
+        result.clever++;
+        break;
+      case "+8h":
+        result.calm++;
+        break;
+      default:
+        break;
+    }
+    //!kids
+    if (useHandlers.kids === "yes") {
+      result.beloved++;
+    } else {
+      result.calm++;
+    }
+    //!pets
+    switch (useHandlers.pets) {
+      case "no":
+        result.protective++;
+        break;
+      case "other":
+        result.clever++;
+        break;
+      case "cat":
+        result.beloved++;
+        break;
+      default:
+        break;
+    }
+    //!house
+    if (useHandlers.house === "edif") {
+      result.calm++;
+    } else {
+      result.active++;
+    }
+    //!active
+    switch (useHandlers.active) {
+      case "no":
+        result.calm++;
+        break;
+      case "regular":
+        result.protective++;
+        break;
+      case "yes":
+        result.active++;
+        break;
+      default:
+        break;
+    }
+    //!exp
+    switch (useHandlers.exp) {
+      case "no":
+        //!dddddd
+        result.beloved++;
+        break;
+      case "regular":
+        result.clever++;
+        break;
+      case "yes":
+        result.protective++;
+        break;
+      default:
+        break;
+    }
+    //!resource
+    if (useHandlers.resource === "yes") {
+      result.active++;
+    } else {
+      result.clever++;
+    }
+    //!love
+    if (useHandlers.love === "yes") {
+      result.beloved++;
+    } else {
+      result.clever++;
+    }
+    //!training
+    if (useHandlers.training === "yes") {
+      result.active++;
+    } else {
+      result.calm++;
+    }
+    //!social
+    if (useHandlers.social === "yes") {
+      result.beloved++;
+    } else {
+      result.protective++;
+    }
+    let max = 0
+    console.log(Object.entries(result).filter(temp => temp[1] > max ? temp : ''));
+  };
+  return (
+    <div className="quiz___wizard-handle">
+      {pageNumbers.map((number) => (
+        <button
+          key={number}
+          className={`quiz___wizard-btn ${
+            currentPage === number ? "active" : ""
+          }`}
+          onClick={() => onPageChange(number)}
+        >
+          {number}
+        </button>
+      ))}
+
+      <button
+        className="quiz___wizard-next btn___hightlight"
+        onClick={() =>
+          Object.values(useHandlers).includes("")
+            ? onPageChange(
+                currentPage !== totalPages ? currentPage + 1 : totalPages
+              )
+            : handleResults()
+        }
+      >
+        {Object.values(useHandlers).includes("") ? "Siguiente" : "Enviar"}
+      </button>
+    </div>
+  );
+}

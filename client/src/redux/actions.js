@@ -8,7 +8,7 @@ export const getDogs = () => {
       const { data } = await axios(`${enpointLocal}dogs`);
       return dispatch({ type: "GET_DOGS", payload: data });
     } catch (error) {
-      console.log(error.message);
+      return dispatch({ type: "SET_ALERT", payload: error });
     }
   };
 };
@@ -18,7 +18,7 @@ export const getTemperament = () => {
       const { data } = await axios(`${enpointLocal}temperaments`);
       return dispatch({ type: "GET_TEMPERAMENTS", payload: data });
     } catch (error) {
-      console.log(error.message);
+      return dispatch({ type: "SET_ALERT", payload: error });
     }
   };
 };
@@ -29,7 +29,7 @@ export const getDogByName = (name) => {
       const { data } = await axios(`${enpointLocal}dogs/?name=${name}`);
       return dispatch({ type: "GET_DOG_BY_NAME", payload: data });
     } catch (error) {
-      console.log(error.message);
+      return dispatch({ type: "SET_ALERT", payload: error });
     }
   };
 };
@@ -40,7 +40,7 @@ export const getDogByID = (id) => {
       const { data } = await axios(`${enpointLocal}dogs/${id}`);
       return dispatch({ type: "GET_DOG_BY_ID", payload: data[0] });
     } catch (error) {
-      console.log(error.message);
+      return dispatch({ type: "SET_ALERT", payload: error });
     }
   };
 };
@@ -51,7 +51,7 @@ export const setDog = (info) => {
       const res = await axios.post(`${enpointLocal}dogs/`, info);
       return dispatch({ type: "ADD_DOG", payload: res });
     } catch (error) {
-      console.log(error.message);
+      return dispatch({ type: "SET_ALERT", payload: error });
     }
   };
 };

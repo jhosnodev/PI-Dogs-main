@@ -8,7 +8,10 @@ export const getDogs = () => {
       const { data } = await axios(`${enpointLocal}dogs`);
       return dispatch({ type: "GET_DOGS", payload: data });
     } catch (error) {
-      return dispatch({ type: "SET_ALERT", payload: error });
+      return dispatch({
+        type: "SET_ALERT",
+        payload: { type: "error", msg: error.message },
+      });
     }
   };
 };
@@ -18,7 +21,10 @@ export const getTemperament = () => {
       const { data } = await axios(`${enpointLocal}temperaments`);
       return dispatch({ type: "GET_TEMPERAMENTS", payload: data });
     } catch (error) {
-      return dispatch({ type: "SET_ALERT", payload: error });
+      return dispatch({
+        type: "SET_ALERT",
+        payload: { type: "error", msg: error.message },
+      });
     }
   };
 };
@@ -29,7 +35,10 @@ export const getDogByName = (name) => {
       const { data } = await axios(`${enpointLocal}dogs/?name=${name}`);
       return dispatch({ type: "GET_DOG_BY_NAME", payload: data });
     } catch (error) {
-      return dispatch({ type: "SET_ALERT", payload: error });
+      return dispatch({
+        type: "SET_ALERT",
+        payload: { type: "error", msg: error.message },
+      });
     }
   };
 };
@@ -40,7 +49,10 @@ export const getDogByID = (id) => {
       const { data } = await axios(`${enpointLocal}dogs/${id}`);
       return dispatch({ type: "GET_DOG_BY_ID", payload: data[0] });
     } catch (error) {
-      return dispatch({ type: "SET_ALERT", payload: error });
+      return dispatch({
+        type: "SET_ALERT",
+        payload: { type: "error", msg: error.message },
+      });
     }
   };
 };
@@ -51,7 +63,30 @@ export const setDog = (info) => {
       const res = await axios.post(`${enpointLocal}dogs/`, info);
       return dispatch({ type: "ADD_DOG", payload: res });
     } catch (error) {
-      return dispatch({ type: "SET_ALERT", payload: error });
+      return dispatch({
+        type: "SET_ALERT",
+        payload: { type: "error", msg: error.message },
+      });
+    }
+  };
+};
+export const updateDog = (info) => {
+  return async (dispatch) => {
+    try {
+      /* http://localhost:3001/dogs/vizsla */
+      const res = await axios.put(`${enpointLocal}dogs/`, info);
+      return dispatch({
+        type: "UPDATE_DOG",
+        payload: {
+          type: "success",
+          msg: res,
+        },
+      });
+    } catch (error) {
+      return dispatch({
+        type: "SET_ALERT",
+        payload: { type: "error", msg: error.message },
+      });
     }
   };
 };

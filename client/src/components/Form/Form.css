@@ -35,6 +35,11 @@
   padding: 2rem;
   margin-bottom: 4rem;
 }
+@media screen and (max-width: 720px) {
+  .form___dogs-info {
+    width: 80%;
+  }
+}
 @media screen and (max-width: 470px) {
   .form___dogs-info {
     width: 80%;

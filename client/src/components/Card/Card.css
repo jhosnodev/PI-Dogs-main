@@ -13,6 +13,11 @@
   touch-action: manipulation;
   vertical-align: baseline;
 }
+@media screen and (max-width: 720px) {
+  .card___container {
+    width: 45%;
+  } 
+}
 @media screen and (max-width: 470px) {
   .card___container {
     width: 80%;
@@ -39,8 +44,8 @@
   position: relative;
   bottom: 28px;
   border-radius: 15px 15px 0 0;
-  height: 30vh;
-  max-height: 30vh;
+  height: 35vh;
+  max-height: 40vh;
 }
 .card___info-container h2 {
   color: #141110;

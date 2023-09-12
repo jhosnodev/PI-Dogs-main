@@ -321,5 +321,5 @@ const quizData = [
     ],
   },
 ];
-const temps = [active, calm, clever, beloved, protective];
+const temps = {active : active, calm: calm, clever: clever, beloved: beloved, protective: protective};
 export { temps, quizData };

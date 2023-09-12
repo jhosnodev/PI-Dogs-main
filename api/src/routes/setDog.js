@@ -1,11 +1,8 @@
 const { Dog, Temperament } = require("../db");
 const axios = require("axios");
 
-//! Subir relaciones de temp
 const setDog = async (req, res) => {
   const { name, bred_for, height, weight, life_span, temperament } = req.body;
-
-  console.log(temperament);
 
   if (name && height && weight && life_span && bred_for && temperament) {
     try {
@@ -13,6 +10,7 @@ const setDog = async (req, res) => {
     } catch (error) {
       console.log(error);
     }
+    
 
     const createDog = await Dog.create({
       name: name,

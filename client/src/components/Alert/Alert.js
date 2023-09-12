@@ -4,14 +4,18 @@ import { useSelector } from "react-redux";
 
 function Alert({ type, msg }) {
   const [isVisible, setIsVisible] = useState(true);
-  const handleClose = () => {
-    setIsVisible(!isVisible);
-  };
-  const info = useSelector((state) => state.alert);
+  const duration = 5000
+const handleClose = ()=>{
+  setIsVisible(false);
+
+}
   useEffect(() => {
-    if (info) setIsVisible(!isVisible);
-  }, [info, isVisible]);
-  console.log(info);
+    // Ocultamos el toast después de la duración especificada
+    setTimeout(() => {
+      setIsVisible(false);
+    }, duration);
+  }, [duration]);
+  
   return (
     <div
       className={`alert___container ${type} ${

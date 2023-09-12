@@ -2,22 +2,44 @@ import React, { useState, useEffect } from "react";
 import "./Form.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getTemperament, setDog, getDogs } from "../../redux/actions";
+import {
+  getTemperament,
+  setDog,
+  getDogs,
+  getDogByID,
+  updateDog,
+} from "../../redux/actions";
 import validations from "./validation";
 
 import Alert from "../Alert/Alert";
 import { Link } from "react-router-dom";
 
 function Form() {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getTemperament());
+    dispatch(getDogByID(id));
+  }, [dispatch, id]);
+
+  const detail = useSelector((state) => state.detail);
+  console.log(detail);
   const [dogData, setDogData] = useState({
-    name: "",
-    bred_for: "",
-    height_min: "",
-    height_max: "",
-    weight_min: "",
-    weight_max: "",
-    life_min: "",
-    life_max: "",
+    name: id ? detail.name : "",
+    bred_for: id ? detail.bred_for : "",
+    height_min: id ? detail.height.split(" - ")[0] : "",
+    height_max: id ? detail.height.split(" - ")[1] : "",
+    weight_min: id ? detail.weight.split(" - ")[0] : "",
+    weight_max: id ? detail.weight.split(" - ")[1] : "",
+    life_min:
+      id && detail.life_span.split(" - ")[0]
+        ? detail.life_span.split(" - ")[0]
+        : "",
+    life_max:
+      id && detail.life_span.split(" - ")[1]
+        ? detail.life_span?.split(" - ")[1].split(" years")[0]
+        : "",
   });
   const [error, setError] = useState([]);
   const [alertMsg, setAlertMsg] = useState({
@@ -25,20 +47,14 @@ function Form() {
     type: "",
   });
 
-  const [mytemps, setMyTemps] = useState([]);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getTemperament());
-  }, [dispatch]);
+  const [mytemps, setMyTemps] = useState(
+    id ? detail.temperaments.map((temp) => temp.name) : []
+  );
 
   const allTemps = useSelector((state) => state.temps);
   const options = allTemps.map((temp) => {
     return { value: temp.id, label: temp.name };
   });
-
-  const { id } = useParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,11 +75,16 @@ function Form() {
         bred_for: dogData.bred_for.trim(),
         height: `${dogData.height_min} - ${dogData.height_max}`,
         weight: `${dogData.weight_min} - ${dogData.weight_max}`,
-        life_span: `${dogData.life_min} - ${dogData.life_max}`,
+        life_span: `${dogData.life_min} - ${dogData.life_max} years`,
         temperament: mytemps,
       };
-      console.log("paso");
-      dispatch(setDog(allValues));
+
+      if (id && detail.id) {
+        console.log({ id: detail.id, ...allValues });
+        /*         dispatch(updateDog({id: detail.id, ...allValues})); */
+      } else {
+        dispatch(setDog(allValues));
+      }
       dispatch(getDogs());
       setAlertMsg({
         msg: "¡Creado con éxito!",
@@ -110,14 +131,14 @@ function Form() {
 
   return (
     <div className="form___main">
-      {alertMsg.msg ? <Alert type={alertMsg.type} msg={alertMsg.msg} /> : ""}
+      {/*       {alertMsg.msg ? <Alert type={alertMsg.type} msg={alertMsg.msg} /> : ""} */}
       <Link className="btn___comeback  " title="Volver" to="/home">
         <svg width="25px" height="25px" viewBox="0 0 2050 2050" fill="#f4f2f2">
           <path d="M1582.2,1488.7a44.9,44.9,0,0,1-36.4-18.5l-75.7-103.9A431.7,431.7,0,0,0,1121.4,1189h-60.1v64c0,59.8-33.5,112.9-87.5,138.6a152.1,152.1,0,0,1-162.7-19.4l-331.5-269a153.5,153.5,0,0,1,0-238.4l331.5-269a152.1,152.1,0,0,1,162.7-19.4c54,25.7,87.5,78.8,87.5,138.6v98.3l161,19.6a460.9,460.9,0,0,1,404.9,457.4v153.4a45,45,0,0,1-45,45Z" />
         </svg>
       </Link>
       <div className="form___dogs-info">
-        <h2>{id ? "Editar" : "Nuevo Perritu"}</h2>
+        <h2>{id ? `Editar ${detail.name}` : "Nuevo Perritu"}</h2>
         <form onSubmit={handleSubmit}>
           <fieldset>
             <label>Raza:</label>

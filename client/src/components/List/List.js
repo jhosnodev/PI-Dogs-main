@@ -13,7 +13,13 @@ function List({ search, setSearch, clear, setClear, order, setOrder }) {
   useEffect(() => {
     dispatch(getDogs());
   }, [dispatch]);
-  const allDogs = useSelector((state) => state.dogs);
+
+  const allDogswofilters = useSelector((state) => state.allDogs);
+  const tempName = useSelector((state) => state.tempName);
+/*   setOrder(`Temperamento: ${tempName}`) */
+  const allDogswfilters = useSelector((state) => state.dogs);
+  const allDogs =
+    search || order || tempName ? allDogswfilters : allDogswofilters;
 
   const handleErase = () => {
     dispatch({ type: "RESET_SEARCH" });

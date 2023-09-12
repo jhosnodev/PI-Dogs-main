@@ -33,11 +33,11 @@
   transform: all;
   cursor: pointer;
   transition: all 250ms;
-  color: #4f4846 !important;
+  color: #4f4846 ;
 }
 
 .active {
-  color: #fd5a59;
+  color: #fd5a59 !important;
   font-weight: 700;
 }
 .page-item-left {

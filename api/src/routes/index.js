@@ -8,6 +8,8 @@ const getDog = require("./getDogs");
 const setTemperaments = require("./setTemperaments");
 const setDog = require("./setDog");
 const getDogId = require("./getDogById");
+const updateDog = require("./updateDog");
+
 const router = Router();
 
 // Configurar los routers
@@ -25,8 +27,8 @@ router.get("/temperaments", setTemperaments);
 //* Create dogs
 router.post("/dogs", setDog);
 
-//! Update dogs
-router.post("/dogs", setDog);
+//? Update dogs
+router.put("/dogs", updateDog);
 
 //! Delete dogs
 router.post("/dogs", setDog);

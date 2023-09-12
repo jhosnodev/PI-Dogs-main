@@ -32,7 +32,7 @@ function Filters({ clear, setClear, order, setOrder }) {
   
   const handleTempFilter = (e) => {
     dispatch(filterTemps(e.target.value));
-    setOrder(`Filtrado por el TEMEPRAMENTO: ${e.target.value}`)
+    setOrder(`Temperamento: ${e.target.value}`)
     setClear(!clear);
   };
   const handleSourceFilter = (source) => {

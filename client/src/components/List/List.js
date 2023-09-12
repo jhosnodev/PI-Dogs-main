@@ -34,8 +34,13 @@ function List({ search, setSearch, clear, setClear, order, setOrder }) {
   return (
     <div className="list___main">
       <div className="list___header-container">
-        <h3>{clear ? 
-        (search.length > 0 ? `Busqueda de: ${search}` : order ) : "Perritus"} </h3>
+        <h3>
+          {clear
+            ? search.length > 0
+              ? `Busqueda de: ${search}`
+              : order
+            : "Perritus"}{" "}
+        </h3>
         <button
           onClick={handleErase}
           className={`btn___hightlight btn___primary ${clear ? "" : "hidden"}`}
@@ -44,7 +49,6 @@ function List({ search, setSearch, clear, setClear, order, setOrder }) {
         </button>
       </div>
       <div className="list___container">
-   
         {currentDogs.map((dog) => (
           <Card
             key={dog.id}

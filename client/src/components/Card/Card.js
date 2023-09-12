@@ -63,7 +63,7 @@ function Card({ name, image, temperaments, bred_for, weight, id }) {
           {weight}
         </span>
         <Link to={`dog/${id}`}>
-          <h2 style={{ fontSize: name.length > 16 ? "1rem" : "1.3rem" }}>
+          <h2 style={{ fontSize: name?.length > 16 ? "1rem" : "1.3rem" }}>
             {name}
           </h2>
         </Link>

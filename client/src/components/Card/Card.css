@@ -61,7 +61,6 @@
 .card___temp-list {
   margin-block: 0;
   list-style: none;
-  padding: 0;
   margin: 0;
   padding-inline-start: 0;
   display: flex;
@@ -69,12 +68,13 @@
   flex-wrap: wrap;
   align-content: center;
   gap: 0.5rem;
+  /*  padding-top: 3rem; 
   overflow-y: scroll;
-  height: 30%;
+ */
 }
 .card___span-temp {
   font-size: 0.6rem;
-  padding: calc(0.4rem - 1px) calc(1.2rem - 1px);
+  padding: calc(0.4rem - 1px) calc(0.5rem - 1px);
   background: #fd5a59;
   color: #f4f2f2;
   font-family: "Work Sans", sans-serif;

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterTemps, getDogs } from "../../redux/actions";
 import Card from "../Card/Card";
 
-
 //! quiz
 function Quiz({ quiz, setQuiz }) {
   const [hours, setHours] = useState("");
@@ -52,8 +51,7 @@ function Quiz({ quiz, setQuiz }) {
   const indexOfFirstQuestion = indexOfLastQuestion - questionPerPage;
   const currentQuiz = quizData.slice(indexOfFirstQuestion, indexOfLastQuestion);
 
-
-  const dispatch= useDispatch()
+  const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getDogs());
   }, [dispatch]);

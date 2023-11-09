@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Alert.css";
-import { useSelector } from "react-redux";
+
 
 function Alert({ type, msg }) {
   const [isVisible, setIsVisible] = useState(true);

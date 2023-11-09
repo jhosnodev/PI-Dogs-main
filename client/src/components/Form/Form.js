@@ -7,7 +7,7 @@ import {
   setDog,
   getDogs,
   getDogByID,
-  updateDog,
+  
 } from "../../redux/actions";
 import validations from "./validation";
 
@@ -29,7 +29,7 @@ function Form() {
 
   const detail = useSelector((state) => state.detail);
   const allTemps = useSelector((state) => state.temps);
-  const alert = useSelector((state) => state.alert);
+/*   const alert = useSelector((state) => state.alert); */
 /*   console.log(alert); */
   const options = allTemps.map((temp) => {
     return { value: temp.id, label: temp.name };

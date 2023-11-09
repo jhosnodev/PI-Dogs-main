@@ -199,3 +199,8 @@ quiz___wizard-btn:active {
   border-radius: 0.5rem 50px 50px 0.5rem;
 }
 
+.quiz___cointainer .card___container{
+  width: auto;
+  height: auto;
+}
+

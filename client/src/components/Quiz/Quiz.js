@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./Quiz.css";
 import { quizData, temps } from "../../data/quiz";
-import { useDispatch } from "react-redux";
-import { filterTemps } from "../../redux/actions";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { filterTemps, getDogs } from "../../redux/actions";
+import Card from "../Card/Card";
+
 
 //! quiz
 function Quiz({ quiz, setQuiz }) {
@@ -45,53 +46,86 @@ function Quiz({ quiz, setQuiz }) {
   //pagination settings
   const [currentPage, setCurrentPage] = useState(1);
   const [questionPerPage] = useState(2);
+  const [tempResult, setTempResult] = useState("");
+  /*   const dispatch = useDispatch(); */
   const indexOfLastQuestion = currentPage * questionPerPage;
   const indexOfFirstQuestion = indexOfLastQuestion - questionPerPage;
   const currentQuiz = quizData.slice(indexOfFirstQuestion, indexOfLastQuestion);
+
+
+  const dispatch= useDispatch()
+  React.useEffect(() => {
+    dispatch(getDogs());
+  }, [dispatch]);
+
+  const dogs = useSelector((state) => state.dogs);
+  console.log(dogs);
+  const randog = Math.floor(Math.random() * dogs.length);
 
   return (
     /* onClick={()=> setQuiz(!quiz)} */
     <div className="quiz___main">
       <div className="quiz___background" onClick={() => setQuiz(!quiz)}></div>
       <div className="quiz___cointainer">
-        <h3>Descubre que perrito seria tu compañero ideal</h3>
-        <form className="quiz___form">
-          {currentQuiz.map((q, index) => (
-            <fieldset key={index}>
-              <label>{q.question}</label>
+        <h3>
+          {tempResult
+            ? `El caracter ideal para ti es: ${tempResult}`
+            : "Descubre que perrito seria tu compañero ideal"}
+        </h3>
+        {tempResult ? (
+          <Card
+            key={dogs[randog].id}
+            id={dogs[randog].id}
+            name={dogs[randog].name}
+            image={dogs[randog].image}
+            temperaments={dogs[randog].temperaments}
+            bred_for={dogs[randog].bred_for}
+            weight={dogs[randog].weight}
+          />
+        ) : (
+          <div>
+            <form className="quiz___form">
+              {currentQuiz.map((q, index) => (
+                <fieldset key={index}>
+                  <label>{q.question}</label>
 
-              <div className="quiz___radio-tile-container">
-                {q.options.map((op) => (
-                  <div className="quiz___radio-container" key={op.value}>
-                    <input
-                      type="radio"
-                      name={q.name}
-                      value={op.value}
-                      className="quiz___radio-btn"
-                      checked={useHandlers[q.name] === op.value}
-                      onChange={(event) =>
-                        useSetHandlers[q.name](event.target.value)
-                      }
-                    />
-                    <div className="quiz___radio_tile">
-                      <div className="quiz___radio-icon">{op.icon}</div>
-                      <label className="quiz___radio-label">{op.label}</label>
-                    </div>
+                  <div className="quiz___radio-tile-container">
+                    {q.options.map((op) => (
+                      <div className="quiz___radio-container" key={op.value}>
+                        <input
+                          type="radio"
+                          name={q.name}
+                          value={op.value}
+                          className="quiz___radio-btn"
+                          checked={useHandlers[q.name] === op.value}
+                          onChange={(event) =>
+                            useSetHandlers[q.name](event.target.value)
+                          }
+                        />
+                        <div className="quiz___radio_tile">
+                          <div className="quiz___radio-icon">{op.icon}</div>
+                          <label className="quiz___radio-label">
+                            {op.label}
+                          </label>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </fieldset>
-          ))}
-        </form>
-        {/* 
-        { questionPerPage;  totalItems=quizData.length; currentPage; onPageChange=setCurrentPage } */}
-        <Pagination
-          questionPerPage={questionPerPage}
-          totalItems={quizData.length}
-          currentPage={currentPage}
-          onPageChange={setCurrentPage}
-          useHandlers={useHandlers}
-        />
+                </fieldset>
+              ))}
+            </form>
+
+            <Pagination
+              questionPerPage={questionPerPage}
+              totalItems={quizData.length}
+              currentPage={currentPage}
+              onPageChange={setCurrentPage}
+              useHandlers={useHandlers}
+              tempResult={tempResult}
+              setTempResult={setTempResult}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
@@ -105,6 +139,8 @@ function Pagination({
   currentPage,
   onPageChange,
   useHandlers,
+  tempResult,
+  setTempResult,
 }) {
   const dispatch = useDispatch();
   const pageNumbers = [];
@@ -115,6 +151,7 @@ function Pagination({
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
+
   const handleResults = () => {
     const result = { active: 0, calm: 0, clever: 0, beloved: 0, protective: 0 };
     //!Hours
@@ -217,10 +254,10 @@ function Pagination({
     //filtrando resultados
     const tempGroup = Object.entries(result).sort((a, b) => b[1] - a[1])[0];
     const random = Math.floor(Math.random() * temps[tempGroup[0]].length);
-    const tempResult = temps[tempGroup[0]][random];
+    setTempResult(temps[tempGroup[0]][random]);
     console.log(tempResult);
 
-    dispatch(filterTemps(tempResult));
+    dispatch(filterTemps(temps[tempGroup[0]][random]));
   };
   return (
     <div className="quiz___wizard-handle">
@@ -249,13 +286,12 @@ function Pagination({
           Siguiente
         </button>
       ) : (
-        <Link
+        <button
           className="quiz___wizard-next btn___hightlight"
           onClick={handleResults}
-          to={'/home'}
         >
           Enviar
-        </Link>
+        </button>
       )}
     </div>
   );

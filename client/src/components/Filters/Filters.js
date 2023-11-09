@@ -21,23 +21,23 @@ function Filters({ clear, setClear, order, setOrder }) {
   const handleSortWeight = (order) => {
     dispatch(orderNumber(order));
     setOrder(`Ordenador por PESO de manera ${order === 'as' ? 'ASCENDENTE' : 'DESCENDETNE' }`)
-    setClear(!clear);
+    setClear(true);
   };
   
   const handleSortBreed = (order) => {
     dispatch(orderAlpha(order));
     setOrder(`Ordenador por RAZA de manera ${order === 'as' ? 'ASCENDENTE' : 'DESCENDETNE' }`)
-    setClear(!clear);
+    setClear(true);
   };
   
   const handleTempFilter = (e) => {
     dispatch(filterTemps(e.target.value));
     setOrder(`Temperamento: ${e.target.value}`)
-    setClear(!clear);
+    setClear(true);
   };
   const handleSourceFilter = (source) => {
     dispatch(filterSource(source));
-    setClear(!clear);
+    setClear(true);
     setOrder(`${source === 'DB' ? 'Tus perritos guardados' : 'Perritus de la API' }`)
   };
 

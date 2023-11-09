@@ -2,14 +2,16 @@ require("dotenv").config();
 const { BASE_URL } = process.env;
 const axios = require("axios");
 const { Dog, Temperament } = require("../db");
+const dogs = require("./pivot");
 
 //*Buscar todos los perros y devolver un arreglo
 /// esta funcion limpia la data de la api y alimenta el resto de las funciones que devuelven respuestas a las rutas de consulta
 
 const allDogsApi = async () => {
   try {
-    const { data } = await axios(BASE_URL);
-    const result = data.map((dog) => {
+    /*     const { data } = await axios(BASE_URL); */
+
+    const result = dogs.map((dog) => {
       return {
         id: dog.id,
         name: dog.name,

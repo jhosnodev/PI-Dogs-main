@@ -5,7 +5,7 @@ const validations = (inputs) => {
   const regexName = /^[a-zA-Z\s]{3,}$/;
   /* const regexName = /^[a-zA-Z]+$/; */
   /*   const regexName2 = /\w{3,}/; */ console.log(inputs);
-  console.log(inputs);
+/*   console.log(inputs); */
   /*
     Number(inputs.life_max) <= 1 &&
       Number(inputs.life_min) >= Number(inputs.life_max)

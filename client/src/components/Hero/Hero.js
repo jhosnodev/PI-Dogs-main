@@ -14,7 +14,7 @@ function Hero() {
   }, []);
   const handleQuiz = () => {
     setQuiz(!quiz);
-    console.log(quiz);
+
   };
   return (
     <section className="hero___container">

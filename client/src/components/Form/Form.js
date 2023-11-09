@@ -30,7 +30,7 @@ function Form() {
   const detail = useSelector((state) => state.detail);
   const allTemps = useSelector((state) => state.temps);
   const alert = useSelector((state) => state.alert);
-  console.log(alert);
+/*   console.log(alert); */
   const options = allTemps.map((temp) => {
     return { value: temp.id, label: temp.name };
   });
@@ -86,7 +86,14 @@ function Form() {
   const [mytemps, setMyTemps] = useState(
     id && detail ? detail.temperaments.map((temp) => temp.name) : []
   );
-
+  const clearAlert = () => {
+    setTimeout(() => {
+      setAlertMsg({
+        msg: "",
+        type: "",
+      });
+    }, 5500);
+  };
   // manejadores
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -119,11 +126,12 @@ function Form() {
           type: "success",
         });
       } else {
-            dispatch(setDog(allValues));
+        dispatch(setDog(allValues));
         setAlertMsg({
           msg: `¡${dogData.name} creado con éxito!`,
           type: "success",
         });
+        clearAlert();
       }
       dispatch(getDogs());
     } else {
@@ -131,6 +139,7 @@ function Form() {
         msg: "No se ha enviado por que tiene errores",
         type: "error",
       });
+      clearAlert();
     }
   };
   const handleInputs = (e) => {
